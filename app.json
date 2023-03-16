@@ -1,0 +1,45 @@
+{
+    "pages": [
+        "pages/center/center",
+        "pages/index/index",
+        "pages/projectDetails/projectDetails",
+        "pages/courseDetail/courseDetail",
+        "pages/courseCategory/courseCategory",
+     
+        "pages/course/course",
+        "pages/consultation/consultation"
+    
+    ],
+    "tabBar": {
+        "selectedColor": "#005826",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "iconPath": "/image/tabbar/index.png",
+                "selectedIconPath": "/image/tabbar/index_s.png",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/courseCategory/courseCategory",
+                "iconPath": "/image/tabbar/course.png",
+                "selectedIconPath": "/image/tabbar/course_s.png",
+                "text": "课程"
+            },
+            {
+                "pagePath": "pages/center/center",
+                "iconPath": "/image/tabbar/center.png",
+                "selectedIconPath": "/image/tabbar/center_s.png",
+                "text": "我的"
+            }
+        ]
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "纪元学院",
+        "navigationBarTextStyle": "black",
+        "navigationStyle": "default"
+    },
+    "lazyCodeLoading": "requiredComponents",
+    "sitemapLocation": "sitemap.json"
+}

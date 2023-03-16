@@ -1,0 +1,87 @@
+<view class="main">
+    <view class="top">
+        <view class="top_imgae">
+            <image src="/image/index/bg.jpg" mode="" />
+        </view>
+    </view>
+    <view class="courseIntroduction">
+        <view class="courseIntroduction_title">
+            金融分析
+        </view>
+        <view class="courseIntroduction_share">
+            <view>
+                3人已参加
+            </view>
+            <view class="courseIntroduction_share_button" bindtap="share">
+                <button open-type="share" class="share">
+                    <view class="iconfont icon-fenxiangxiao">
+                    </view>
+                </button>
+
+            </view>
+        </view>
+        <view class="courseIntroduction_content">
+            <view class="courseIntroduction_content_item">
+                适合人群: <text>推荐有相关专业基础</text>
+            </view>
+            <view class="courseIntroduction_content_item">
+                课程类型: <text>A项目(进阶类)</text>
+            </view>
+            <view class="courseIntroduction_content_item">
+                专业方向: <text>工科</text>
+            </view>
+            <view class="courseIntroduction_content_item teacher">
+               <view class="courseIntroduction_content_item_title">
+                授课老师: 
+               </view> 
+               <view class="courseIntroduction_content_item_content">
+                <view class="teacher_item">
+                <image src="/image/index/bg.jpg" mode=""/>
+                    <text>XXX大学XXX系XXX教授</text>
+                </view>
+                <view class="teacher_item">
+                <image src="/image/index/bg.jpg" mode=""/>
+                    <text>XXX大学XXX系XXX教授</text>
+                </view>
+                <view class="teacher_item">
+                <image src="/image/index/bg.jpg" mode=""/>
+                    <text>XXX大学XXX系XXX教授</text>
+                </view>
+               </view>
+         
+        
+              
+            </view>
+        </view>
+    </view>
+    <view class="harvest">
+        <view class="harvest_title">
+            学习本课程，您将获得
+        </view>
+        <view class="harvest_content">
+            <view class="harvest_content_item">
+                <view class="iconfont icon-duigoux">
+
+                </view> 收获 <text>XXXX</text>
+            </view>
+            <view class="harvest_content_item">
+                <view class="iconfont icon-duigoux">
+
+                </view> 收获 <text>XXXX</text>
+            </view>
+            <view class="harvest_content_item">
+                <view class="iconfont icon-duigoux">
+
+                </view> 收获 <text>XXXX</text>
+            </view>
+            <view class="harvest_content_item">
+                <view class="iconfont icon-duigoux">
+
+                </view> 收获 <text>XXXX</text>
+            </view>
+
+
+        </view>
+    </view>
+    <customerService></customerService>
+</view>

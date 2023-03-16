@@ -1,0 +1,140 @@
+<view class="main" 
+  >
+<scroll-view class="top" id="top">
+    <scroll-view class="scroll-box" scroll-x scroll-with-animation
+  scroll-into-view="{{toView}}" bindtouchstart="touchStart"
+  bindtouchend="touchEnd">
+    <view wx:for="{{category1}}" wx:key="index" class="card-box" id="card_{{index}}">
+      <view class="card">
+      <view class="card_top">
+        <view>{{item}}</view>
+        <view class="course_intro">
+            课程简介
+        </view>
+        <view class="toDetail">
+           <text bindtap="toCourseDetail">了解详情</text> 
+           <view class="iconfont icon-xiangyou1">
+               
+           </view>
+        </view>
+      </view>
+        <view class="card_bottom">
+            <view class="iconfont icon-icon-angle-double-bottom">
+                
+            </view>
+        </view>
+      </view>
+    </view>
+</scroll-view>
+    <view class="top_title">
+        <block wx:for="{{hotCourse}}" wx:key="index">
+            <view class="top_title_item {{index==currentView?'top_title_active':''}}" bindtap="toTitleItem" data-toTitleItem="{{index}}">
+                {{item}}
+            </view>
+        </block>
+    </view>
+
+</scroll-view>
+<view class="content">
+        <view class="content_top">
+            <view class="content_top_title">
+            <block wx:for="{{category2}}" wx:key="item">
+            <view class="content_top_tile_item {{index==chooseSubIndex?'content_top_tile_item_active':''}}" bindtap="chooseSub" data-choosesub="{{index}}">
+                    {{item}}
+                </view>
+            </block>
+            </view>
+            <view class="content_top_content">
+                <view class="allNum">
+                    共25个课程
+                </view>
+                <view class="allType">
+                    全部类型
+                </view>
+            </view>
+        </view>
+        <view class="content_center">
+            <view class="content_item_content" bindtap="toCourseDetail">
+                <view class="content_item_content_top">
+                    <image src="/image/index/bg.jpg" mode=""/>
+                    <view class="content_item_content_top_title">
+                      <text>一对一课程</text>  
+                    </view>
+                    <view class="content_item_content_top_content">
+                      商业分析
+                    </view>
+                    <view class="content_item_content_top_bottom">
+                        <!-- <view class="iconfont icon-wode">
+                            
+                        </view> -->
+                        <view>
+                           英文|麦克马斯特大学
+                        </view>
+                    </view>
+                </view>
+                <view class="content_item_content_bottom">
+                <view class="content_item_content_bottom_content">
+                    “拥有市场比拥有工厂更为重要，而拥有市场的唯一
+                    手段是拥有占统治地位的品牌”。当今，市场.上可供选择的商品和服务种类越来越富新媒体屏出不穷商业发 属步伐疯犴消 费者的”
+                </view>
+                
+                </view>
+              
+            </view>
+            <view class="content_item_content" bindtap="toCourseDetail">
+                <view class="content_item_content_top">
+                    <image src="/image/index/bg.jpg" mode=""/>
+                    <view class="content_item_content_top_title">
+                      <text>一对一课程</text>  
+                    </view>
+                    <view class="content_item_content_top_content">
+                      商业分析
+                    </view>
+                    <view class="content_item_content_top_bottom">
+                        <!-- <view class="iconfont icon-wode">
+                            
+                        </view> -->
+                        <view>
+                           英文|麦克马斯特大学
+                        </view>
+                    </view>
+                </view>
+                <view class="content_item_content_bottom">
+                <view class="content_item_content_bottom_content">
+                    “拥有市场比拥有工厂更为重要，而拥有市场的唯一
+                    手段是拥有占统治地位的品牌”。当今，市场.上可供选择的商品和服务种类越来越富新媒体屏出不穷商业发 属步伐疯犴消 费者的”
+                </view>
+                
+                </view>
+              
+            </view>
+            <view class="content_item_content" bindtap="toCourseDetail">
+                <view class="content_item_content_top">
+                    <image src="/image/index/bg.jpg" mode=""/>
+                    <view class="content_item_content_top_title">
+                      <text>一对一课程</text>  
+                    </view>
+                    <view class="content_item_content_top_content">
+                      商业分析
+                    </view>
+                    <view class="content_item_content_top_bottom">
+                        <!-- <view class="iconfont icon-wode">
+                            
+                        </view> -->
+                        <view>
+                           英文|麦克马斯特大学
+                        </view>
+                    </view>
+                </view>
+                <view class="content_item_content_bottom">
+                <view class="content_item_content_bottom_content">
+                    “拥有市场比拥有工厂更为重要，而拥有市场的唯一
+                    手段是拥有占统治地位的品牌”。当今，市场.上可供选择的商品和服务种类越来越富新媒体屏出不穷商业发 属步伐疯犴消 费者的”
+                </view>
+                
+                </view>
+              
+            </view>
+        </view>
+    </view>
+</view>

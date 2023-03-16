@@ -1,0 +1,111 @@
+<view class="main">
+    <view class="side_bar">
+    <block wx:for="{{course}}" wx:key="index">
+        <view class="side_bar_item {{index==chooseIndex?'side_bar_item_active':''}}" bindtap="chooseCourse" data-choose="{{index}}">
+            {{item}}
+        </view>
+    </block>
+    </view>
+    <view class="content">
+        <view class="content_top">
+            <view class="content_top_title">
+            <block wx:for="{{subclass}}" wx:key="item">
+            <view class="content_top_tile_item {{index==chooseSubIndex?'content_top_tile_item_active':''}}" bindtap="chooseSub" data-choosesub="{{index}}">
+                    {{item}}
+                </view>
+            </block>
+            </view>
+            <view class="content_top_content">
+                <view class="allNum">
+                    共25个课程
+                </view>
+                <view class="allType">
+                    全部类型
+                </view>
+            </view>
+        </view>
+        <view class="content_center">
+            <view class="content_item_content">
+                <view class="content_item_content_top">
+                    <image src="/image/index/bg.jpg" mode=""/>
+                    <view class="content_item_content_top_title">
+                      <text>一对一课程</text>  
+                    </view>
+                    <view class="content_item_content_top_content">
+                      商业分析
+                    </view>
+                    <view class="content_item_content_top_bottom">
+                        <!-- <view class="iconfont icon-wode">
+                            
+                        </view> -->
+                        <view>
+                           英文|麦克马斯特大学
+                        </view>
+                    </view>
+                </view>
+                <view class="content_item_content_bottom">
+                <view class="content_item_content_bottom_content">
+                    “拥有市场比拥有工厂更为重要，而拥有市场的唯一
+                    手段是拥有占统治地位的品牌”。当今，市场.上可供选择的商品和服务种类越来越富新媒体屏出不穷商业发 属步伐疯犴消 费者的”
+                </view>
+                
+                </view>
+              
+            </view>
+            <view class="content_item_content">
+                <view class="content_item_content_top">
+                    <image src="/image/index/bg.jpg" mode=""/>
+                    <view class="content_item_content_top_title">
+                      <text>一对一课程</text>  
+                    </view>
+                    <view class="content_item_content_top_content">
+                      商业分析
+                    </view>
+                    <view class="content_item_content_top_bottom">
+                        <!-- <view class="iconfont icon-wode">
+                            
+                        </view> -->
+                        <view>
+                           英文|麦克马斯特大学
+                        </view>
+                    </view>
+                </view>
+                <view class="content_item_content_bottom">
+                <view class="content_item_content_bottom_content">
+                    “拥有市场比拥有工厂更为重要，而拥有市场的唯一
+                    手段是拥有占统治地位的品牌”。当今，市场.上可供选择的商品和服务种类越来越富新媒体屏出不穷商业发 属步伐疯犴消 费者的”
+                </view>
+                
+                </view>
+              
+            </view>
+            <view class="content_item_content">
+                <view class="content_item_content_top">
+                    <image src="/image/index/bg.jpg" mode=""/>
+                    <view class="content_item_content_top_title">
+                      <text>一对一课程</text>  
+                    </view>
+                    <view class="content_item_content_top_content">
+                      商业分析
+                    </view>
+                    <view class="content_item_content_top_bottom">
+                        <!-- <view class="iconfont icon-wode">
+                            
+                        </view> -->
+                        <view>
+                           英文|麦克马斯特大学
+                        </view>
+                    </view>
+                </view>
+                <view class="content_item_content_bottom">
+                <view class="content_item_content_bottom_content">
+                    “拥有市场比拥有工厂更为重要，而拥有市场的唯一
+                    手段是拥有占统治地位的品牌”。当今，市场.上可供选择的商品和服务种类越来越富新媒体屏出不穷商业发 属步伐疯犴消 费者的”
+                </view>
+                
+                </view>
+              
+            </view>
+        </view>
+    </view>
+</view>
