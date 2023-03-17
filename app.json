@@ -1,10 +1,11 @@
 {
     "pages": [
+        "pages/courseCategory/courseCategory",
         "pages/center/center",
         "pages/index/index",
         "pages/projectDetails/projectDetails",
         "pages/courseDetail/courseDetail",
-        "pages/courseCategory/courseCategory",
+      
      
         "pages/course/course",
         "pages/consultation/consultation"

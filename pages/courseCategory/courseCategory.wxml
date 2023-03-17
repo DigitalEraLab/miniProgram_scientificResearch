@@ -38,12 +38,20 @@
 <view class="content">
         <view class="content_top">
             <view class="content_top_title">
-            <block wx:for="{{category2}}" wx:key="item">
+            <block wx:for="{{category0}}" wx:key="item">
             <view class="content_top_tile_item {{index==chooseSubIndex?'content_top_tile_item_active':''}}" bindtap="chooseSub" data-choosesub="{{index}}">
                     {{item}}
                 </view>
             </block>
             </view>
+            <view class="content_top_title">
+            <block wx:for="{{category1}}" wx:key="item">
+            <view class="content_top_tile_item {{index==chooseSubIndex?'content_top_tile_item_active':''}}" bindtap="chooseSub" data-choosesub="{{index}}">
+                    {{item}}
+                </view>
+            </block>
+            </view>
+           
             <view class="content_top_content">
                 <view class="allNum">
                     共25个课程
@@ -54,6 +62,9 @@
             </view>
         </view>
         <view class="content_center">
+        <block wx:for="{{category2}}">
+            
+        </block>
             <view class="content_item_content" bindtap="toCourseDetail">
                 <view class="content_item_content_top">
                     <image src="/image/index/bg.jpg" mode=""/>

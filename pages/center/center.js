@@ -11,7 +11,12 @@ Page({
      * 获取手机号进行登录
      */
     getPhoneNumber (e) {
-        console.log(e.detail.code)
+        // console.log(e.detail.code)
+        wx.login({
+          success: (res) => {
+            console.log(res);
+          },
+        })
       },
     /**
      * 登录
