@@ -119,15 +119,24 @@
 }
 
 .main .top .top_title_fixed {
-  height: 160px;
+  height: 80px;
   position: fixed;
   top: 0;
   left: 0;
   color: black;
   z-index: 99;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
   background-color: white;
   margin: 0;
   animation: show 0.5s linear;
+}
+
+.main .top .top_title_fixed .top_title_item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-bottom: 5px;
 }
 
 .main .top .top_title_fixed .top_title_active {
@@ -317,5 +326,5 @@
 }
 
 .main .content_fixed {
-  padding-top: 200px;
+  padding-top: 80px;
 }

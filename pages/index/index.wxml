@@ -85,6 +85,7 @@
     </view>
 
     <view class="advantage">
+    <view class="advantage_center">
         <view class="advantage_title">
             我们的优势
         </view>
@@ -114,11 +115,15 @@
             </view>
         </view>
     </view>
-    <view class="choose">
-        <view class="choose_title">
+     
+    </view>
+    <view class="advantage choose">
+    <view class="advantage_center">
+        <view class="advantage_title">
             选择我们你将获得
         </view>
-        <view class="choose_item">
+        
+        <view class="advantage_item">
             <view class="iconfont icon-handoup">
       
             </view>
@@ -126,7 +131,7 @@
                 xxxxxxxxxx
             </view>
         </view>
-        <view class="choose_item">
+        <view class="advantage_item">
             <view class="iconfont icon-handoup">
       
             </view>
@@ -134,7 +139,7 @@
                 xxxxxxxxxx
             </view>
         </view>
-        <view class="choose_item">
+        <view class="advantage_item">
             <view class="iconfont icon-handoup">
       
             </view>
@@ -143,7 +148,10 @@
             </view>
         </view>
     </view>
+     
+    </view>
     <view class="teacher">
+    <view class="teacher_center">
         <view class="teacher_title">
             教师团队
         </view>
@@ -189,6 +197,8 @@
                 </view>
             </view>
         </view>
+    </view>
+       
     </view>
     <view class="trainee">
         <view class="trainee_title">

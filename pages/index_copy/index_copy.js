@@ -10,7 +10,7 @@ Page({
     currentView: DEFAULT_PAGE,
     data: {
         hotCourse:['人工智能','数据挖掘','计算机视觉','自然语言处理'],
-        category0:['计算机','商科','人文社会'],
+        category0:['A项目','B项目'],
         category1:['人工智能','计算机系统','计算机理论','交叉领域'],
         category2:['全部','人工智能','数据挖掘','计算机视觉','自然语言处理','信息检索','计算机网络','网络安全','数据库','嵌入式系统'],
         toView: `card_${DEFAULT_PAGE}`,

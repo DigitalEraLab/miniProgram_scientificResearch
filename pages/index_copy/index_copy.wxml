@@ -36,24 +36,7 @@
 
 </scroll-view>
 <view class="content {{isFixed?'content_fixed':''}}">
-        <view class="content_top {{isFixed?'content_top_active':''}}">
-            <view class="content_top_title">
-            <block wx:for="{{category1}}" wx:key="item">
-            <view class="content_top_tile_item {{index==chooseSubIndex?'content_top_tile_item_active':''}}" bindtap="chooseSub" data-choosesub="{{index}}">
-                  <text>{{item}}</text>  
-                </view>
-            </block>
-            </view>
-           
-            <view class="content_top_content">
-                <view class="allNum">
-                    共25个课程
-                </view>
-                <view class="allType">
-                    全部类型
-                </view>
-            </view>
-        </view>
+      
         <view class="content_center">
             <view class="content_item_content" bindtap="toCourseDetail">
                 <view class="content_item_content_top">
