@@ -1,24 +1,35 @@
 // pages/courseCategory/courseCategory.js
 const DEFAULT_PAGE = 0;
+const DEFAULT_PAGE1 = -1;
 var app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
-    startPageX: 0,
-    currentView: DEFAULT_PAGE,
     data: {
-        hotCourse:['人工智能','数据挖掘','计算机视觉','自然语言处理'],
-        category0:['A项目','B项目'],
-        category1:['人工智能','计算机系统','计算机理论','交叉领域'],
-        category2:['全部','人工智能','数据挖掘','计算机视觉','自然语言处理','信息检索','计算机网络','网络安全','数据库','嵌入式系统'],
+        category1:[
+            {proName:'A项目',pages:[{
+                'proIntroduce':[' 送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦',' 送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦'],
+            },{
+                'harvest':['收获1','收获2','收获3','收获4','收获5','收获6','收获7','收获8','收获9',],
+            },{
+                'proPeriod':{'time':'16','research':['过程1','过程2','过程3','过程1','过程2','过程3'],'Write':['过程7'],PageIntroduction:[0,1,2]}
+            }]},
+            {proName:'B项目','proIntroduce':[' 送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦',' 送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦送哦吧v哦对吧v哦不对吧v哦啊吧v哦不波v宝宝v哦'],harvest:['收获1','收获2','收获3','收获4','收获5','收获6','收获7','收获8','收获9',],proPeriod:{'time':'16',research:['过程1','过程2','过程3','过程1','过程2','过程3'],Write:['过程7']}}
+        
+        ],
+        
         toView: `card_${DEFAULT_PAGE}`,
         startPageY:0,
         startPageX:0,
+        startPageY1:0,
         currentView:0,
         chooseSubIndex:0,
+        showPage:true,
         isFixed:false,//页面吸顶
+        indexPage:0,//当前滚动页
+        toPage: `card_${DEFAULT_PAGE1}`,
         // list: ['Javascript', 'Typescript', 'Java', 'PHP', 'Go']
     },
 
@@ -47,28 +58,16 @@ Page({
     },
 
     scrollTo() {
-        // 1.使用wx.createSelectorQuery()查询到需要滚动到的元素位置
         wx.createSelectorQuery().select('#top').boundingClientRect(res => {
-           
-            // console.log(res.height);
-          // 到这里，我们可以从res中读到class为bb4的top，即离顶部的距离（px）
-          // 2使用wx.pageScrollTo()将页面滚动到对应位置
           wx.pageScrollTo({
             scrollTop: res.height, // 滚动到的位置（距离顶部 px）
             duration: 400 //滚动所需时间 如果不需要滚动过渡动画，设为0（ms）
           })
         }).exec()
     },
-    toFixed(){
-       
-    },
     onPageScroll(e){
         wx.createSelectorQuery().select('#top').boundingClientRect(res => {
-            console.log('具体高度',res.height);
-            if(e.scrollTop>50){
-                
-            }
-            if(e.scrollTop>res.height-50 &&e.scrollTop>200){
+            if(e.scrollTop>res.height-50){
                this.setData({
                    isFixed:true
                })
@@ -78,7 +77,6 @@ Page({
                 })
             }
           }).exec()
-        console.log(e.scrollTop);
 
     },
 
@@ -86,12 +84,12 @@ Page({
     touchStart(e) {
         this.data.startPageX = e.changedTouches[0].pageX;
         this.data.startPageY = e.changedTouches[0].pageY;
-        console.log('开始',e.changedTouches[0].pageY);
+        console.log('开始1',e.changedTouches[0].pageY);
       },
     
       touchEnd(e) {
         const moveX = e.changedTouches[0].pageX - this.data.startPageX;
-        console.log('结束',e.changedTouches[0].pageY);
+        console.log('结束1',e.changedTouches[0].pageY);
         const moveY=e.changedTouches[0].pageY - this.data.startPageY;
         // console.log('滑动距离',moveY);
         const maxPage = this.data.category1.length - 1;
@@ -109,10 +107,12 @@ Page({
         }
         console.log(Math.abs(moveY));
         if(Math.abs(moveY)>15){
-            
             if (moveY<0){
                 console.log('moveY',moveY);
                 this.scrollTo()
+                this.setData({
+                    showPage:false
+                })
               }
         }
        
@@ -121,6 +121,40 @@ Page({
           toView: `card_${this.data.currentView}`,
           toBottom:`card_${this.data.currentLocation}`
         });
+      },
+
+
+      
+    touchStart1(e) {
+        this.data.startPageY1 = e.changedTouches[0].pageY;
+      },
+    touchEnd1(e) {
+        const moveY=e.changedTouches[0].pageY - this.data.startPageY1;
+        const maxPage1 = 2;
+        console.log('滑动距离',moveY);
+        if(Math.abs(moveY)>30){
+            if (moveY<0){
+                this.setData({
+                  indexPage:this.data.indexPage !== maxPage1 ? this.data.indexPage + 1 : maxPage1
+                })
+          }else{
+            this.setData({
+                indexPage:this.data.indexPage !== -1 ? this.data.indexPage - 1 : -1
+            })
+          }  
+        }
+        this.setData({
+         toPage:`card_${this.data.indexPage}`
+        });
+        if(this.data.indexPage==-1){
+            setTimeout(()=>{
+                this.setData({
+                    showPage:true
+                })
+            },0)
+     
+        }
+        console.log(this.data.toPage);
       },
 
     /**

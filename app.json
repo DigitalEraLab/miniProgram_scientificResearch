@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/index_scroll/index_scroll",
         "pages/index_copy/index_copy",
         "pages/courseCategory/courseCategory",
         "pages/center/center",
@@ -8,13 +9,13 @@
         "pages/courseDetail/courseDetail",
         "pages/course/course",
         "pages/consultation/consultation"
-     
+   
     ],
     "tabBar": {
         "selectedColor": "#005826",
         "list": [
             {
-                "pagePath": "pages/index_copy/index_copy",
+                "pagePath": "pages/index_scroll/index_scroll",
                 "iconPath": "/image/tabbar/index.png",
                 "selectedIconPath": "/image/tabbar/index_s.png",
                 "text": "首页"
