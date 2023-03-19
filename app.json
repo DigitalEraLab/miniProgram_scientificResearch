@@ -1,9 +1,12 @@
 {
     "pages": [
-        "pages/index_scroll/index_scroll",
-        "pages/index_copy/index_copy",
         "pages/courseCategory/courseCategory",
         "pages/center/center",
+     
+        "pages/index_scroll/index_scroll",
+        "pages/index_copy/index_copy",
+       
+       
         "pages/index/index",
         "pages/projectDetails/projectDetails",
         "pages/courseDetail/courseDetail",

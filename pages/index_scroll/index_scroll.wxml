@@ -1,24 +1,26 @@
 <view class="main">
-    <swiper vertical class="swiper-container" id="swiper-container" current="{{currentPage}}" >
-        <swiper-item class="top" >
+    <swiper vertical class="swiper-container" id="swiper-container" current="{{currentPage}}">
+        <swiper-item class="top">
             <view class="toBottom" wx:if="{{bottom_currentPage!=2}}">
-            <view class="iconfont icon-icon-angle-double-bottom">
-                
+
+                <view class="iconfont icon-icon-angle-double-bottom">
+
+                </view>
             </view>
-        </view>
             <view class="choose ">
-                <view wx:for="{{category1}}" wx:key="index" bindtap="choosePro" data-choose="{{index}}"  class="{{index==top_currentPage?'choose_active':''}}">
+                <view wx:for="{{category1}}" wx:key="index" bindtap="choosePro" data-choose="{{index}}" class="{{index==top_currentPage?'choose_active':''}}">
                     {{item.proName}}
                 </view>
             </view>
             <swiper style="height: 100vh;" circular current="{{top_currentPage}}" bindchange="choosePro1">
                 <swiper-item wx:for="{{category1}}" wx:key="index">
+                    <image src="/image/index/swiper.jpg" mode="" />
                     <view class="top_item">
                         <view class="top_item_title">
                             {{item.proName}}
                         </view>
                         <view class="top_item_proIntro">
-                            {{item.proName=='A项目'?"銥计划基础版":"銥计划极速版"}}
+                            {{item.proName=='A项目'?"金衣计划深度版":"金衣计划标准版"}}
                         </view>
                         <view class="top_item_toDetail" bindtap="goToNextPage">
                             了解详情 >
@@ -28,95 +30,102 @@
             </swiper>
         </swiper-item>
         <swiper-item class="content">
-        <view class="toTop" bindtap="toTop">
-            <view class="iconfont icon-xiangyou1">
-                
+            <view class="toTop" bindtap="toTop" wx:if="{{bottom_currentPage==0}}">
+                <view class="iconfont icon-xiangyou1">
+
+                </view>
             </view>
-        </view>
-        
+
             <view class="choose ">
-                <view wx:for="{{category1}}" wx:key="index" bindtap="choosePro" data-choose="{{index}}"  class="{{index==top_currentPage?'choose_active':''}}">
+                <view wx:for="{{category1}}" wx:key="index" bindtap="choosePro" data-choose="{{index}}" class="{{index==top_currentPage?'choose_active':''}}">
                     {{item.proName}}
                 </view>
             </view>
-            <swiper vertical class="swiper-container"  current="{{bottom_currentPage}}" bindchange="bottomPageChange">
-                <block wx:for="{{category1[0].pages}}" wx:key="index">
-                  
+            <swiper vertical class="swiper-container" current="{{bottom_currentPage}}" bindchange="bottomPageChange">
+                <block wx:for="{{category1[top_currentPage].pages}}" wx:key="index">
+
                     <swiper-item class="content_item">
                         <view class="toBottom" wx:if="{{bottom_currentPage!=2}}">
-            <view class="iconfont icon-icon-angle-double-bottom">
-                
-            </view>
-        </view>
-                    <view class="content_item_title">
-                       <view class="content_item_title_left">
-                        0{{index+1}}
-                       </view> 
-                       <view class="content_item_title_right">
-                           <text>{{item.proName[0]}}</text>
-                           <text>{{item.proName[1]}}</text>
-                       </view>
-                    </view>
-                    <view class="introduce" wx:if="{{item.proIntroduce}}">
-                    <block wx:for="{{item.proIntroduce}}" wx:key="index">
-                        <view class="content_item_content_item">
-                            {{item}}
-                        </view>
-                    </block>
-                    
-                    </view>
-                    <view class="harvest" wx:if="{{item.harvest}}">
-                    <block wx:for="{{item.harvest}}" wx:key="index">
-                        <view class="harvest_item">
-                          <view class="iconfont icon-duigoux">
-                              
-                          </view>
-                            <view class="harvest_item_intro">
-                                {{item}}
+                            <view class="iconfont icon-icon-angle-double-bottom">
+
                             </view>
                         </view>
-                    </block>
-                    
-                    </view>
-                    <view class="period" wx:if="{{item.proPeriod}}">
-                        <view class="allTime">
-                            项目整体时长:{{item.proPeriod.Alltime}}周
+                        <view class="content_item_title">
+                            <view class="content_item_title_left">
+                                0{{index+1}}
+                            </view>
+                            <view class="content_item_title_right">
+                                <text>{{item.proName[0]}}</text>
+                                <text>{{item.proName[1]}}</text>
+                            </view>
                         </view>
-                        <view class="research">
-                          <view class="research_title">
-                            做研究:{{item.proPeriod.ResearchTime}}
-                          </view>  
-                          <view class="research_item" wx:for="{{item.proPeriod.Research}}" wx:key="index">
-                                <view class="iconfont icon-fenxiangxiao">
-                                    
+                        <view class="introduce" wx:if="{{item.proIntroduce}}">
+                            <block wx:for="{{item.proIntroduce}}" wx:key="index">
+                                <view class="content_item_content_item">
+                                    {{item}}
                                 </view>
-                              <text>{{item}}</text>
-                          </view>
-                        </view>
-                        <view class="write">
-                          <view class="write_title">
-                            写论文:{{item.proPeriod.WriteTime}}
-                          </view>  
-                          <view class="write_item" wx:for="{{item.proPeriod.Write}}" wx:key="index">
-                                <view class="iconfont icon-fenxiangxiao">
-                                    
+                            </block>
+                            <view class="introduce_item" >
+                                <view wx:for="{{category1[top_currentPage].pages[0].pro_item}}" wx:key="index">
+                                    <text>{{item.t1}}</text>
+                                    <text>{{item.t2}}
+                                    </text>
                                 </view>
-                              <text>{{item}}</text>
-                          </view>
+                            </view>
+
                         </view>
-                    </view>
-             
-                    <view>
-                    </view>
-                </swiper-item>  
-           
+                        <view class="harvest" wx:if="{{item.harvest}}">
+                            <block wx:for="{{item.harvest}}" wx:key="index">
+                                <view class="harvest_item">
+                                    <view class="iconfont {{item.iconfont}}">
+
+                                    </view>
+                                    <view class="harvest_item_intro">
+                                        <text>{{item.content}}</text>
+                                    </view>
+                                </view>
+                            </block>
+
+                        </view>
+                        <view class="period" wx:if="{{item.proPeriod}}">
+                            <view class="allTime">
+                                项目整体时长:{{item.proPeriod.Alltime}}周
+                            </view>
+                            <view class="research">
+                                <view class="research_title">
+                                    做研究:{{item.proPeriod.ResearchTime}}周
+                                </view>
+                                <view class="research_item" wx:for="{{item.proPeriod.Research}}" wx:key="index">
+                                    <view class="iconfont  {{index==item.proPeriod.Research.length-1?'icon-xingxing':'icon-handoup'}} ">
+
+                                    </view>
+                                    <text>{{item}}</text>
+                                </view>
+                            </view>
+                            <view class="write">
+                                <view class="write_title">
+                                    写论文:{{item.proPeriod.WriteTime}}周
+                                </view>
+                                <view class="write_item" wx:for="{{item.proPeriod.Write}}" wx:key="index">
+                                    <view class="iconfont icon-handoup">
+
+                                    </view>
+                                    <text>{{item}}</text>
+                                </view>
+                            </view>
+                        </view>
+
+                        <view>
+                        </view>
+                    </swiper-item>
+
                 </block>
 
-              
+
 
             </swiper>
 
         </swiper-item>
-      
+
     </swiper>
 </view>

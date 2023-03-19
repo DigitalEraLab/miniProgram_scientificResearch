@@ -1,23 +1,55 @@
 // pages/center/center.js
+var app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        isLogin:false,
     },
     /**
      * 获取手机号进行登录
      */
     getPhoneNumber (e) {
         // console.log(e.detail.code)
+        let that=this;
         wx.login({
           success: (res) => {
-            console.log(res);
+              ///wechat/wechatLogin
+            let url=app.globalData.Testurl
+           
+            wx.request({
+                url: url+'/wechat/wechatLogin?code='+res.code,
+                success: function(res) {
+                  console.log(res.data.data);
+                 if(res.data.success){
+                    wx.setStorage({
+                        key: 'token',
+                        data: res.data.data,
+                        success: function () {
+                            console.log('缓存数据成功');
+                          }
+                      });
+                      that.setData({
+                        isLogin:true
+                    })
+                 }
+                 
+                }
+              })
           },
         })
       },
+    //   退出登录
+    logout(){
+        wx.clearStorage()
+        this.setData({
+            isLogin:false
+        })
+    },
+
+
     /**
      * 登录
      */
@@ -26,14 +58,31 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+       
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
-
+        let that=this;
+        wx.getStorage({
+            key: "token",
+            success(res) {
+              console.log(res.data)
+              if(res.data){
+                that.setData({
+                    isLogin:true
+                }) 
+              }
+            },
+            fail: function () {
+                console.log('获取缓存数据失败');
+                that.setData({
+                    isLogin:false
+                })
+              }
+          })
     },
 
     /**

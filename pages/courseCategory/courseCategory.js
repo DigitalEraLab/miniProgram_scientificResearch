@@ -9,17 +9,15 @@ Page({
     startPageX: 0,
     currentView: DEFAULT_PAGE,
     data: {
-        hotCourse:['人工智能','数据挖掘','计算机视觉','自然语言处理'],
-        category0:['计算机','商科','人文社会'],
-        category1:['人工智能','计算机系统','计算机理论','交叉领域'],
-        category2:['全部','人工智能','数据挖掘','计算机视觉','自然语言处理','信息检索','计算机网络','网络安全','数据库','嵌入式系统'],
+        category0:[],
+        course:[{'courseName':'系统及信息安全方向System Security','startTime':'5月6日','school':'麻省理工学院','enterprise':'阿里巴巴（中国）有限公司','Surplus':'99'},{'courseName':'系统及信息安全方向System Security','startTime':'5月6日','school':'麻省理工学院','enterprise':'阿里巴巴（中国）有限公司','Surplus':'99'},{'courseName':'系统及信息安全方向System Security','startTime':'5月6日','school':'麻省理工学院','enterprise':'阿里巴巴（中国）有限公司','Surplus':'99'},{'courseName':'系统及信息安全方向System Security','startTime':'5月6日','school':'麻省理工学院','enterprise':'阿里巴巴（中国）有限公司','Surplus':'99'},{'courseName':'系统及信息安全方向System Security','startTime':'5月6日','school':'麻省理工学院','enterprise':'阿里巴巴（中国）有限公司','Surplus':99}],
+        
         toView: `card_${DEFAULT_PAGE}`,
         startPageY:0,
         startPageX:0,
         currentView:0,
         chooseSubIndex:0,
         isFixed:false,//页面吸顶
-        // list: ['Javascript', 'Typescript', 'Java', 'PHP', 'Go']
     },
 
 
@@ -47,15 +45,10 @@ Page({
     },
 
     scrollTo() {
-        // 1.使用wx.createSelectorQuery()查询到需要滚动到的元素位置
         wx.createSelectorQuery().select('#top').boundingClientRect(res => {
-           
-            // console.log(res.height);
-          // 到这里，我们可以从res中读到class为bb4的top，即离顶部的距离（px）
-          // 2使用wx.pageScrollTo()将页面滚动到对应位置
           wx.pageScrollTo({
-            scrollTop: res.height, // 滚动到的位置（距离顶部 px）
-            duration: 400 //滚动所需时间 如果不需要滚动过渡动画，设为0（ms）
+            scrollTop: res.height,
+            duration: 400
           })
         }).exec()
     },
@@ -64,7 +57,7 @@ Page({
     },
     onPageScroll(e){
         wx.createSelectorQuery().select('#top').boundingClientRect(res => {
-            console.log('具体高度',res.height);
+            // console.log('具体高度',res.height);
             if(e.scrollTop>50){
                 
             }
@@ -78,7 +71,6 @@ Page({
                 })
             }
           }).exec()
-        console.log(e.scrollTop);
 
     },
 
@@ -86,15 +78,15 @@ Page({
     touchStart(e) {
         this.data.startPageX = e.changedTouches[0].pageX;
         this.data.startPageY = e.changedTouches[0].pageY;
-        console.log('开始',e.changedTouches[0].pageY);
+        // console.log('开始',e.changedTouches[0].pageY);
       },
     
       touchEnd(e) {
         const moveX = e.changedTouches[0].pageX - this.data.startPageX;
-        console.log('结束',e.changedTouches[0].pageY);
+        // console.log('结束',e.changedTouches[0].pageY);
         const moveY=e.changedTouches[0].pageY - this.data.startPageY;
         // console.log('滑动距离',moveY);
-        const maxPage = this.data.category1.length - 1;
+        const maxPage = this.data.course.length - 1;
         if (Math.abs(moveX) >= 50){
             // console.log('触发横向滚动条件',moveX);
           if (moveX > 0) {
@@ -107,11 +99,9 @@ Page({
             })
           }
         }
-        console.log(Math.abs(moveY));
         if(Math.abs(moveY)>15){
             
             if (moveY<0){
-                console.log('moveY',moveY);
                 this.scrollTo()
               }
         }
@@ -128,10 +118,29 @@ Page({
      */
     onLoad(options) {
         let url=app.globalData.Testurl
+        let that=this
         wx.request({
-          url: url+'/course/listCourseAndCategory?category=计算机科学',
+          url: url+'/course/listCourseAndCategory',
           success: function(res) {
-            console.log(res);
+            console.log(res.data.data);
+            let arr=[];
+            let arr1=[];
+            for(let i=0;i<res.data.data.CategoryList.length;i++){
+                arr.push(res.data.data.CategoryList[i].name)
+            }
+            for(let i=0;i<res.data.data.CourseList.length;i++){
+              
+                let date = new Date(res.data.data.CourseList[i].startTime);
+                let day = date.getDate();
+                let mon=date.getMonth()+1;
+                res.data.data.CourseList[i].startTime=mon+'月'+day+'日';
+
+            }
+            that.setData({
+                category0:arr,
+                course:res.data.data.CourseList
+            })
+            console.log(that.data.course);
           }
         })
     },

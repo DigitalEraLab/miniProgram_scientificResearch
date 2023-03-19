@@ -3,8 +3,12 @@
         <view class="iconfont icon-wode">
             
         </view>
-        <view class="Login">
+        <view class="Login" wx:if="{{!isLogin}}">
             <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">点击登录</button>
+        </view>
+        <view class="Login" wx:if="{{isLogin}}">
+           <text>微信用户  </text> 
+           <text class="logOut" bindtap="logout">退出登录</text>
         </view>
     </view>
     <view class="advertisement">
