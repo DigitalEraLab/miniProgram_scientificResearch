@@ -1,32 +1,32 @@
 <view class="main" 
-  >
+   >
+
+   <dialog wx:if="{{showDialog}}" dialogTitle="{{dialogTitle}}" dialogContent="{{dialogContent}}" bind:fromDialog="fromDialogData"></dialog>
+
 <scroll-view class="top" id="top">
     <scroll-view class="scroll-box" scroll-x scroll-with-animation
   scroll-into-view="{{toView}}" bindtouchstart="touchStart"
   bindtouchend="touchEnd">
     <view wx:for="{{category0}}" wx:key="index" class="card-box" id="card_{{index}}">
       <view class="card">
+        <image src="https://eralab.oss-cn-guangzhou.aliyuncs.com/static/{{item}}.svg" alt="" class="card_bg" mode="aspectFill"/>
       <view class="card_top">
         <view>{{item}}</view>
-        <view class="course_intro">
-            课程简介
-        </view>
         <view class="toDetail">
-           <text bindtap="scrollTo">了解详情</text> 
-           <view class="iconfont icon-xiangyou1">
-               
+           <view class="toDetail_button" bindtap="scrollTo">
+               了解详情
            </view>
         </view>
       </view>
         <view class="card_bottom">
-            <view class="iconfont icon-icon-angle-double-bottom">
+            <view class="iconfont icon-xiangxiagengduo">
                 
             </view>
         </view>
       </view>
     </view>
 </scroll-view>
-    <view class="top_title {{isFixed?'top_title_fixed':''}}">
+    <view class="top_title {{isFixed?'top_title_fixed':''}}" wx:if="{{isFixed}}">
         <block wx:for="{{category0}}" wx:key="index">
             <view class="top_title_item {{index==currentView?'top_title_active':''}}" bindtap="toTitleItem" data-toTitleItem="{{index}}">
                <text>{{item}}</text> 
@@ -55,14 +55,21 @@
             </view>
         </view>
         <view class="content_center" wx:for="{{course}}" wx:key="index">
-            <view class="content_item_content" bindtap="toCourseDetail">
+            <view class="content_item_content" bindtap="toCourseDetail" data-id="{{item.id}}">
+                <view class="content_item_content_bg">
+                
+                    <image src="https://eralab.oss-cn-guangzhou.aliyuncs.com/static/{{category0[currentView]}}_s.svg" mode="widthFix"/>
+                </view>
+              
                 <view class="content_item_content_top">
-                    <image src="/image/index/bg.jpg" mode=""/>
-                    <view class="content_item_content_top_title">
+               
+                    <!-- <view class="content_item_content_top_title">
                       <text>开始日期:{{item.startTime}}</text>  
-                    </view>
+                    </view> -->
                     <view class="content_item_content_top_content">
-                        {{item.courseName}}
+                     <text> {{item.courseName}}</text>
+                     <text>  {{item.EName}}</text>  
+                      
                     </view>
                     <view class="content_item_content_top_bottom">
                         <!-- <view class="iconfont icon-wode">
@@ -76,15 +83,17 @@
                         </view>
                     </view>
                 </view>
-                <view class="content_item_content_bottom">
+                <!-- <view class="content_item_content_bottom">
                 <view class="content_item_content_bottom_content">
                  剩余席位:{{item.surplus}}
                 </view>
  
                 
-                </view>
+                </view> -->
               
             </view>
         </view>
+   
     </view>
 </view>
+

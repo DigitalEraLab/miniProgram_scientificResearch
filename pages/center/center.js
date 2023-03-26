@@ -20,9 +20,13 @@ Page({
             let url=app.globalData.Testurl
            
             wx.request({
-                url: url+'/wechat/wechatLogin?code='+res.code,
+                url: url+'/wechat/wechatLogin',
+                data:{
+                    loginCode:res.code,
+                    phoneCode:e.detail.code,
+                },
+                method:'GET',
                 success: function(res) {
-                  console.log(res.data.data);
                  if(res.data.success){
                     wx.setStorage({
                         key: 'token',
@@ -58,18 +62,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-       
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
         let that=this;
         wx.getStorage({
             key: "token",
             success(res) {
-              console.log(res.data)
               if(res.data){
                 that.setData({
                     isLogin:true
@@ -83,6 +79,13 @@ Page({
                 })
               }
           })
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady() {
+       
     },
 
     /**

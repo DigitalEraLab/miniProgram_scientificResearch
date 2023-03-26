@@ -1,18 +1,18 @@
 {
     "pages": [
-        "pages/courseCategory/courseCategory",
-        "pages/center/center",
-     
         "pages/index_scroll/index_scroll",
+       
+        "pages/courseCategory/courseCategory",
+
+        "pages/index_final/index_final",
+        "pages/center/center",
         "pages/index_copy/index_copy",
-       
-       
         "pages/index/index",
         "pages/projectDetails/projectDetails",
         "pages/courseDetail/courseDetail",
         "pages/course/course",
         "pages/consultation/consultation"
-   
+
     ],
     "tabBar": {
         "selectedColor": "#005826",

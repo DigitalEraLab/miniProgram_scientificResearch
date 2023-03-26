@@ -4,11 +4,11 @@
             
         </view>
         <view class="Login" wx:if="{{!isLogin}}">
-            <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">点击登录</button>
+            <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="loginButton">点击登录</button>
         </view>
         <view class="Login" wx:if="{{isLogin}}">
            <text>微信用户  </text> 
-           <text class="logOut" bindtap="logout">退出登录</text>
+           <text class="logOut" bindtap="logout">退出</text>
         </view>
     </view>
     <view class="advertisement">
@@ -40,7 +40,7 @@
            周一至周五 10:00-20:00
         </view>
     </view>
-    <view class="match">
+    <!-- <view class="match">
         <view class="match_top">
             
         </view>
@@ -50,5 +50,5 @@
         </view>
       
         </view>
-    </view>
+    </view> -->
 </view>
