@@ -18,7 +18,7 @@ Page({
           success: (res) => {
               ///wechat/wechatLogin
             let url=app.globalData.Testurl
-           
+            console.log(e.detail);
             wx.request({
                 url: url+'/wechat/wechatLogin',
                 data:{

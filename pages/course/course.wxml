@@ -1,111 +1,90 @@
 <view class="main">
-    <view class="side_bar">
-    <block wx:for="{{course}}" wx:key="index">
-        <view class="side_bar_item {{index==chooseIndex?'side_bar_item_active':''}}" bindtap="chooseCourse" data-choose="{{index}}">
-            {{item}}
-        </view>
-    </block>
+    <swiper vertical="{{true}}" class="swiper_all" 
+    bindchange="swiperChangeAll" current="{{UpandDown}}">
+    <view class="topTitle">
+                <block wx:for="{{category0}}" wx:key="index">
+                    <view class="topTitle_item {{leftAndright==index?'topTitle_item_active':''}}" data-choose="{{index}}" bindtap="topChoose">
+                        {{item}}
+                      <view class="line">
+                          
+                      </view>
+                    </view>
+                </block>
     </view>
-    <view class="content">
-        <view class="content_top">
-            <view class="content_top_title">
-            <block wx:for="{{subclass}}" wx:key="item">
-            <view class="content_top_tile_item {{index==chooseSubIndex?'content_top_tile_item_active':''}}" bindtap="chooseSub" data-choosesub="{{index}}">
-                    {{item}}
-                </view>
-            </block>
-            </view>
-            <view class="content_top_content">
-                <view class="allNum">
-                    共25个课程
-                </view>
-                <view class="allType">
-                    全部类型
-                </view>
-            </view>
+        <swiper-item class="top">
+           
+        <view class="Down">
+           <view class="iconfont icon-xiangxiagengduo">
+               
+           </view>
         </view>
-        <view class="content_center">
-            <view class="content_item_content">
-                <view class="content_item_content_top">
-                    <image src="/image/index/bg.jpg" mode=""/>
-                    <view class="content_item_content_top_title">
-                      <text>一对一课程</text>  
-                    </view>
-                    <view class="content_item_content_top_content">
-                      商业分析
-                    </view>
-                    <view class="content_item_content_top_bottom">
-                        <!-- <view class="iconfont icon-wode">
-                            
-                        </view> -->
-                        <view>
-                           英文|麦克马斯特大学
+            <swiper class="swiper1" current="{{leftAndright}}" bindchange="swiperChangeLR">
+                <block wx:for="{{category0}}" wx:key="index">
+                    <swiper-item>
+                        <image src="https://eralab.oss-cn-guangzhou.aliyuncs.com/static/{{currentType}}.svg" mode="widthFix" bindload="imgLoad" />
+                        <view class="toBottom" bindtap="toBottom">
+                            {{imgUrl}}
+                            <text>了解详情</text>
                         </view>
-                    </view>
-                </view>
-                <view class="content_item_content_bottom">
-                <view class="content_item_content_bottom_content">
-                    “拥有市场比拥有工厂更为重要，而拥有市场的唯一
-                    手段是拥有占统治地位的品牌”。当今，市场.上可供选择的商品和服务种类越来越富新媒体屏出不穷商业发 属步伐疯犴消 费者的”
-                </view>
-                
-                </view>
-              
-            </view>
-            <view class="content_item_content">
-                <view class="content_item_content_top">
-                    <image src="/image/index/bg.jpg" mode=""/>
-                    <view class="content_item_content_top_title">
-                      <text>一对一课程</text>  
-                    </view>
-                    <view class="content_item_content_top_content">
-                      商业分析
-                    </view>
-                    <view class="content_item_content_top_bottom">
-                        <!-- <view class="iconfont icon-wode">
-                            
-                        </view> -->
-                        <view>
-                           英文|麦克马斯特大学
+                    </swiper-item>
+                </block>
+            </swiper>
+
+        </swiper-item>
+        <swiper-item class="content">
+            <view class="content_title">
+                <view class="content_title_cneter">
+                    <block wx:for="{{category0}}" wx:key="index">
+                        <view class="content_title_cneter_item {{index==leftAndright?'content_title_cneter_active':''}}">
+                            <text bindtap="bottomChoose" data-choose="{{index}}">{{item}}</text>
                         </view>
+                    </block>
+
+
+                </view>
+                <view class="content_title_courseNum">
+                    <view>
+                        共<text>{{course.length}}</text> 个课程
+                    </view>
+                    <view>
+                        全部类型
                     </view>
                 </view>
-                <view class="content_item_content_bottom">
-                <view class="content_item_content_bottom_content">
-                    “拥有市场比拥有工厂更为重要，而拥有市场的唯一
-                    手段是拥有占统治地位的品牌”。当今，市场.上可供选择的商品和服务种类越来越富新媒体屏出不穷商业发 属步伐疯犴消 费者的”
-                </view>
-                
-                </view>
-              
             </view>
-            <view class="content_item_content">
-                <view class="content_item_content_top">
-                    <image src="/image/index/bg.jpg" mode=""/>
-                    <view class="content_item_content_top_title">
-                      <text>一对一课程</text>  
-                    </view>
-                    <view class="content_item_content_top_content">
-                      商业分析
-                    </view>
-                    <view class="content_item_content_top_bottom">
-                        <!-- <view class="iconfont icon-wode">
-                            
-                        </view> -->
-                        <view>
-                           英文|麦克马斯特大学
+            <swiper class="swiper2" current="{{leftAndright}}" horizontal="{{true}}" bindchange="swiperChangeLR">
+                <block wx:for="{{category0}}" wx:key="index">
+                    <swiper-item>
+                    <scroll-view scroll-y="true" class="swiper2_scroll">
+                        <view class="content_center" wx:for="{{course}}" wx:key="index">
+                            <view class="content_item_content" bindtap="toCourseDetail" data-id="{{item.id}}">
+                                <view class="content_item_content_bg">
+                                    <image src="https://eralab.oss-cn-guangzhou.aliyuncs.com/static/{{currentType}}_s.svg" mode="widthFix" />
+                                </view>
+
+                                <view class="content_item_content_top">
+                                    <view class="content_item_content_top_content">
+                                        <text> {{item.courseCnName}}</text>
+                                        <text> {{item.courseEnName}}</text>
+
+                                    </view>
+                                    <view class="content_item_content_top_bottom">
+
+                                        <view>
+                                            导师院校:{{item.school}}
+                                        </view>
+                                        <view>
+                                            专家企业: {{item.enterprise}}
+                                        </view>
+                                    </view>
+                                </view>
+
+                            </view>
                         </view>
-                    </view>
-                </view>
-                <view class="content_item_content_bottom">
-                <view class="content_item_content_bottom_content">
-                    “拥有市场比拥有工厂更为重要，而拥有市场的唯一
-                    手段是拥有占统治地位的品牌”。当今，市场.上可供选择的商品和服务种类越来越富新媒体屏出不穷商业发 属步伐疯犴消 费者的”
-                </view>
-                
-                </view>
-              
-            </view>
-        </view>
-    </view>
+                    </scroll-view>
+                       
+                    </swiper-item>
+                </block>
+            </swiper>
+        </swiper-item>
+    </swiper>
 </view>

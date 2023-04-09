@@ -20,7 +20,7 @@
   border-radius: 50%;
   color: white;
   font-weight: bold;
-  background: #005826;
+  background: #059d77;
   font-size: 32rpx;
   top: calc(50%);
   margin-top: -46rpx;

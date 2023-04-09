@@ -1,45 +1,28 @@
 <view class="main">
-    <swiper vertical class="swiper-container" id="swiper-container" current="{{currentPage}}">
+    <swiper vertical class="swiper-container">
         <swiper-item class="top">
-            <!-- <view class="top_item">
-                        <view class="top_item_title">
-                            {{item.proName}}
-                            <text>金衣计划</text>
-                            <text>Golden</text>
-                            <text>coat</text>
-                            <text>Project</text>
-                        </view>
-                       
-                    </view> -->
-            <view class="choose ">
+            <!-- <view class="choose">
                 <view wx:for="{{category1}}" wx:key="index" bindtap="choosePro" data-choose="{{index}}" class="{{index==top_currentPage?'choose_active':''}}">
                     {{item.proName}}
                 </view>
-            </view>
-            <swiper class="swiper_top" style="height: 100vh;" circular current="{{top_currentPage}}" bindchange="choosePro1">
+            </view> -->
+            <swiper class="swiper_top" current="{{top_currentPage}}" bindchange="choosePro1">
                 <swiper-item wx:for="{{category1}}" wx:key="index">
-                    <image style="position: absolute; left: 0rpx; top: 1rpx" src="https://eralab.oss-cn-guangzhou.aliyuncs.com/static/bg{{index+1}}.svg" mode="widthFix"/>
+                    <image src="https://www.eralab.cn/static/bg{{index+1}}.svg" mode="widthFix" />
                 </swiper-item>
             </swiper>
         </swiper-item>
         <swiper-item class="content">
-            <!-- <view class="toTop" bindtap="toTop" wx:if="{{bottom_currentPage==0}}">
-                <view class="iconfont icon-xiangyou1">
-                </view>
-            </view> -->
-
             <view class="choose">
                 <view wx:for="{{category1}}" wx:key="index" bindtap="choosePro" data-choose="{{index}}" class="{{index==top_currentPage?'choose_active':''}}">
                     {{item.proName}}
                 </view>
             </view>
-            <swiper style="height: 100vh;" bindchange="bottomSwiperChange" current="{{top_currentPage}}">
+            <swiper bindchange="bottomSwiperChange" current="{{top_currentPage}}" class="bottomSwiperChange">
                 <block wx:for="{{category1}}" wx:key="index">
                     <swiper-item>
-                        <!-- <swiper vertical class="swiper-container" current="{{bottom_currentPage}}" bindchange="bottomPageChange"> -->
                         <scroll-view scroll-y="true"  class="content_center" >
                             <block wx:for="{{item.pages}}" wx:key="index">
-                                <!-- <swiper-item class="content_item"> -->
                                 <view class="content_item">
                                     <view class="content_item_title">
                                         <view class="content_item_title_left">
@@ -57,10 +40,16 @@
                                             </view>
                                         </block>
                                         <view class="introduce_item">
-                                            <view wx:for="{{category1[top_currentPage].pages[0].pro_item}}" wx:key="index">
-                                                <text>{{item.t1}}</text>
+                                            <view wx:for="{{category1[top_currentPage].pages[0].pro_item}}" wx:key="index" class="introduce_item_s">
+                                                <view class="iconfont {{item.iconfont}}" style="background-color : {{item.color}};">
+                                                    
+                                                </view>
+                                                <view class="introduce_item_tright">
+                                                    <text>{{item.t1}}</text>
                                                 <text>{{item.t2}}
                                                 </text>
+                                                </view>
+                                             
                                             </view>
                                         </view>
 
@@ -79,55 +68,13 @@
                                                     <text>{{item.other}}</text>
                                                 </view>
                                             </view>
+                                      
                                         </block>
 
                                     </view>
                                     <view class="period" wx:if="{{item.proPeriod}}">
-                                        <!-- <view class="allTime">
-                                            项目整体时长:{{item.proPeriod.Alltime}}周
-                                        </view>
-                                        <view class="research">
-                                            <view class="research_title">
-                                                做研究:{{item.proPeriod.ResearchTime}}周
-                                            </view>
-                                            <view class="research_content"> 
-                                                <view class="research_item" wx:for="{{item.proPeriod.Research.step}}" wx:key="index">
-                                                <view class="iconfont  'icon-handoup'" wx:if="{{index!=6}}">
-                                                </view>
-                                                <text>{{item}}</text>
-                                            </view> 
-                                            <view class="research_bottom" wx:for="{{item.proPeriod.Research.characteristic}}" wx:key="index">
-                                                {{item}}
-                                            </view>
-                                            </view>
-                                          
-                                        </view>
-                                        <view class="write">
-                                            <view class="write_title">
-                                                写论文:{{item.proPeriod.WriteTime}}周
-                                            </view>
-                                            <view class="write_center">
-                                                <view class="write_item" wx:for="{{item.proPeriod.Write.step}}" wx:key="index">
-                                                <view class="iconfont icon-handoup">
-
-                                                </view>
-                                                <text>{{item}}</text>
-                                            </view>
-                                            <view class="write_bottom" >
-                                              <text wx:for="{{item.proPeriod.Write.characteristic}}" wx:key="index">
-                                                {{item}}</text>  
-                                            </view>  
-                                            </view>
-                                         
-                                        </view>
-                                        <view class="toCourse" bindtap="toCourse">
-                                          <view>查看课程</view> 
-                                          <view class="iconfont icon-chakan">
-                                            </view> 
-                                        </view> -->
                                     <view class="image">
-                                    
-                                        <image src="https://eralab.oss-cn-guangzhou.aliyuncs.com/static/period{{top_currentPage+1}}.svg" mode="widthFix"/>
+                                        <image src="https://www.eralab.cn/static/period{{top_currentPage+1}}.svg" mode="widthFix"/>
                                     </view>
                                     
                                     </view>
@@ -137,18 +84,13 @@
                                     </view>
                                 </view>
                                
-                                <!-- </swiper-item> -->
                             </block>
                         </scroll-view>
                          
-
-                        <!-- </swiper> -->
                     </swiper-item>
                 </block>
 
             </swiper>
-
-
         </swiper-item>
 
     </swiper>

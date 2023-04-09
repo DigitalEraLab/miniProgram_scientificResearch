@@ -1,16 +1,16 @@
 <view class="main">
     <view class="top">
         <view class="top_imgae">
-            <image src="/image/index/bg.jpg" mode="" />
+            <image src="https://www.eralab.cn/static/{{type}}_s.svg" mode="widthFix" bindload="imgLoad" />
         </view>
     </view>
     <view class="courseIntroduction">
         <view class="courseIntroduction_title">
-            金融分析
+            {{name}}
         </view>
         <view class="courseIntroduction_share">
             <view>
-                3人已参加
+                {{enName}}
             </view>
             <view class="courseIntroduction_share_button" bindtap="share">
                 <button open-type="share" class="share">
@@ -22,66 +22,236 @@
         </view>
         <view class="courseIntroduction_content">
             <view class="courseIntroduction_content_item">
-                适合人群: <text>推荐有相关专业基础</text>
+                <text>难度等级</text>
+                <view class="iconfont icon-tisheng " style="color: #ffd033;">
+
+                </view>
+                <text>中等</text>
+                <text></text>
             </view>
             <view class="courseIntroduction_content_item">
-                课程类型: <text>A项目(进阶类)</text>
+                <text>课程类型</text>
+                <view class="iconfont icon-shuben" style="color: #ff7272;">
+
+                </view>
+                <text>（深度版和标准版）</text>
+                <text></text>
             </view>
             <view class="courseIntroduction_content_item">
-                专业方向: <text>工科</text>
-            </view>
-            <view class="courseIntroduction_content_item teacher">
-               <view class="courseIntroduction_content_item_title">
-                授课老师: 
-               </view> 
-               <view class="courseIntroduction_content_item_content">
-                <view class="teacher_item">
-                <image src="/image/index/bg.jpg" mode=""/>
-                    <text>XXX大学XXX系XXX教授</text>
+                <text>专业方向</text>
+                <view class="iconfont icon-zhaozhuanye" style="color: #598fff;">
                 </view>
-                <view class="teacher_item">
-                <image src="/image/index/bg.jpg" mode=""/>
-                    <text>XXX大学XXX系XXX教授</text>
-                </view>
-                <view class="teacher_item">
-                <image src="/image/index/bg.jpg" mode=""/>
-                    <text>XXX大学XXX系XXX教授</text>
-                </view>
-               </view>
-         
-        
-              
+                <text>{{type}}
+                </text>
             </view>
-        </view>
-    </view>
-    <view class="harvest">
-        <view class="harvest_title">
-            学习本课程，您将获得
-        </view>
-        <view class="harvest_content">
-            <view class="harvest_content_item">
-                <view class="iconfont icon-duigoux">
-
-                </view> 收获 <text>XXXX</text>
-            </view>
-            <view class="harvest_content_item">
-                <view class="iconfont icon-duigoux">
-
-                </view> 收获 <text>XXXX</text>
-            </view>
-            <view class="harvest_content_item">
-                <view class="iconfont icon-duigoux">
-
-                </view> 收获 <text>XXXX</text>
-            </view>
-            <view class="harvest_content_item">
-                <view class="iconfont icon-duigoux">
-
-                </view> 收获 <text>XXXX</text>
-            </view>
-
 
         </view>
     </view>
+
+
+    <view class="content">
+        <view class="content_item">
+            <view class="content_item_title">
+                课程简介
+                <view class="content_item_title_leftline">
+
+                </view>
+                <view class="content_item_title_rightline">
+
+                </view>
+            </view>
+            <view class="content_item_content {{showIntro?'content_item_content_active':''}}">
+                {{courseIntro}}
+            </view>
+            <view class="showIntro" bindtap="showIntro">
+                {{showIntro?'收起':'展开'}}
+            </view>
+        </view>
+
+        <view class="content_item">
+            <view class="content_item_title">
+                合作团队
+                <view class="content_item_title_leftline">
+
+                </view>
+                <view class="content_item_title_rightline">
+
+                </view>
+            </view>
+            <view class="team" >
+            <view class="team_item" wx:for="{{team}}" wx:key="index">
+      
+                <image src="{{item.img}}" mode="heightFix"/>
+             
+            </view>
+
+            </view>
+
+
+
+        </view>
+
+
+        <view class="content_item">
+            <view class="content_item_title">
+                科研要点
+                <view class="content_item_title_leftline">
+
+                </view>
+                <view class="content_item_title_rightline">
+
+                </view>
+            </view>
+            <view class=" research">
+            <swiper class="research_swiper" vertical="{{false}}" previous-margin="20" next-margin="20" style="height:{{itemsHeight}}px;" bindchange="swiperChange">
+                <block wx:for="{{researchPoints}}" wx:key="index">
+                    <swiper-item>
+                        <view class="content_item_content_item research_swiper_{{index}}">
+                            <text>{{item.title}}</text>
+                            <text>{{item.content}}</text>
+                    </view>
+            </swiper-item>
+                </block>
+                    
+            </swiper>
+               
+
+            </view>
+
+
+
+        </view>
+      
+
+        <view class="content_item">
+            <view class="content_item_title">
+                项目大纲
+                <view class="content_item_title_leftline">
+
+                </view>
+                <view class="content_item_title_rightline">
+
+                </view>
+            </view>
+            <view class="outline">
+                <text class="line"></text>
+                <block wx:for="{{outline}}" wx:key="index">
+                    <view class="outline_item">
+                    <view class="outline_item_left">
+                        <view class="iconfont icon-duigoux">
+                    </view> 
+                    </view>
+                  
+                    <view class="outline_item_intro">
+                        <text>{{item.title}}</text>
+                            <text>{{item.content}}</text>
+                    </view>
+                    </view>
+                </block>
+
+            </view>
+
+
+
+        </view>
+
+        <view class="content_item">
+            <view class="content_item_title">
+                适合人群
+                <view class="content_item_title_leftline">
+
+                </view>
+                <view class="content_item_title_rightline">
+
+                </view>
+            </view>
+            <view class="Suitable">
+                <block wx:for="{{Suitable}}" wx:key="index">
+                    <view class="content_item_content_item">
+                        <view class="Suitable_intro">
+                        <view class="iconfont icon-handoup">
+                            
+                        </view>
+                            <text> {{item}}</text>
+                        </view>
+
+                    </view>
+                </block>
+
+            </view>
+
+
+
+        </view>
+
+        <!-- <view class="content_item">
+            <view class="content_item_title">
+                学员心得
+                <view class="content_item_title_leftline">
+
+                </view>
+                <view class="content_item_title_rightline">
+
+                </view>
+            </view>
+            <swiper vertical="{{false}}" class="content_item_swiper {{showmore!=null?'content_item_swiper_active':''}}">
+            
+                <block wx:for="{{experience}}" wx:key="index">
+                    <swiper-item class="experience">
+                        <view class="experience_content">
+                            <view class="top {{showmore==index?'top_active':''}}">
+                                {{item.txt}}
+                            </view>
+                            <view class="showMore" bindtap="showMore" data-showmore="{{index}}" wx:if="{{ showmore!=index}}">
+                                阅读全文，查看更多
+                            </view>
+                            <view class="showMore" bindtap="fold" data-showmore="{{index}}" wx:if="{{index==showmore}}">
+                                折叠
+                            </view>
+
+
+                            <view class="offer">
+                                <swiper previous-margin="30px" next-margin="30px" class="offers_swiper" vertical="{{false}}" current="1">
+                                    <swiper-item wx:for="{{item.offers}}" wx:key="index">
+                                        <view class="offer_item">
+                                            <view class="image">
+                                                <image src="{{item.img}}" mode="widthFix" />
+                                            </view>
+                                            <view class="offer_intro">
+                                                {{item.intro}}
+                                            </view>
+                                        </view>
+                                    </swiper-item>
+                                </swiper>
+
+
+
+                            </view>
+
+
+                            <view class="name">
+                                <text>{{item.name}}</text>
+                                <text>录取院校:{{item.school}}</text>
+                            </view>
+                            <view class="head">
+                                <image src="{{item.head_img}}" mode="widthFix" />
+                            </view>
+                        </view>
+                    </swiper-item>
+
+
+                </block>
+            </swiper>
+
+
+
+
+        </view> -->
+
+
+
+
+    </view>
+
     <customerService></customerService>
 </view>

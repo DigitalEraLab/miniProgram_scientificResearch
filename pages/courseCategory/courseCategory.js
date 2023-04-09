@@ -2,7 +2,6 @@
 const DEFAULT_PAGE = 0;
 var app = getApp();
 var urls = app.globalData.Testurl;
-var ImgUrls="https://www.eralab.cn/static";
 Page({
 
     /**
@@ -10,8 +9,10 @@ Page({
      */
     startPageX: 0,
     currentView: DEFAULT_PAGE,
+    isLoading: false, //图片加载
+
+    imgUrl2: '', //第二张图片缓存
     data: {
-        imgurls:ImgUrls,
         category0: ['计算机科学','金融商科','理工科','人文社科'],
         course: [{
             'courseName': '系统及信息安全方向',
@@ -43,7 +44,8 @@ Page({
             'enterprise': '阿里巴巴（中国）有限公司',
             'Surplus': 99
         }],
-
+        // category0: [],
+        // course: [],
         toView: `card_${DEFAULT_PAGE}`,
         startPageY: 0,
         startPageX: 0,
@@ -52,14 +54,47 @@ Page({
         isFixed: false, //页面吸顶
         showDialog: false, //弹出框
         dialogTitle: "提示",
-        dialogContent: "请登录查看课程详情!"
+        dialogContent: "请登录查看课程详情!",
+        allImg1Loading: 0, //大图加载数量
     },
+    // 图片加载完毕触发事件
+    onImageLoad() {
+        wx.hideLoading()
+        let res1 = this.data.allImg1Loading;
+        res1 = res1 + 1
+        this.setData({
+            isLoading: false,
+            allImg1Loading: res1
+        })
 
+        if (this.data.allImg1Loading == this.data.category0.length) {
+            wx.hideLoading()
+        }
+    },
+    // 图片加载失败
+    onImageError() {
+        wx.hideLoading()
+        this.setData({
+            isLoading: false
+        })
+
+        wx.hideLoading()
+        wx.showModal({
+            title: '提示',
+            content: '资源数据失败',
+            success(res) {
+                if (res.confirm) {
+                    console.log('用户点击了确定按钮')
+                } else if (res.cancel) {
+                    console.log('用户点击了取消按钮')
+                }
+            }
+        })
+    },
 
 
     // 大类选择
     toTitleItem(e) {
-        console.log('选择了',e.currentTarget.dataset.totitleitem);
         this.setData({
             toView: `card_${e.currentTarget.dataset.totitleitem}`,
             currentView: e.currentTarget.dataset.totitleitem
@@ -81,32 +116,13 @@ Page({
     toCourseDetail(e) {
         let that = this
         let id = e.currentTarget.dataset.id
-           wx.navigateTo({
-                    url: '/pages/courseDetail/courseDetail?id=' + id,
-                })
-        // wx.getStorage({
-        //     key: 'token',
-        //     success(res) {
-        //         wx.navigateTo({
-        //             url: '/pages/courseDetail/courseDetail?id=' + id,
-        //         })
-        //     },
-        //     fail(res) {
-        //         that.setData({
-        //             showDialog: true
-        //         })
-             
-        //     },
-        // })
-    },
-
-    //小类选择
-    chooseSub(e) {
-        this.setData({
-            chooseSubIndex: e.currentTarget.dataset.choosesub
+        let type=this.data.category0[this.data.currentView]
+        wx.navigateTo({
+            url: '/pages/courseDetail/courseDetail?id=' + id+'&type='+type,
         })
     },
 
+    // 滚动到
     scrollTo() {
         wx.createSelectorQuery().select('#top').boundingClientRect(res => {
             wx.pageScrollTo({
@@ -115,15 +131,8 @@ Page({
             })
         }).exec()
     },
-    toFixed() {
-
-    },
     onPageScroll(e) {
         wx.createSelectorQuery().select('#top').boundingClientRect(res => {
-            // console.log('具体高度',res.height);
-            if (e.scrollTop > 50) {
-
-            }
             if (e.scrollTop > res.height - 50 && e.scrollTop > 200) {
                 this.setData({
                     isFixed: true
@@ -136,8 +145,6 @@ Page({
         }).exec()
 
     },
-
-
     touchStart(e) {
         this.data.startPageX = e.changedTouches[0].pageX;
         this.data.startPageY = e.changedTouches[0].pageY;
@@ -146,13 +153,9 @@ Page({
 
     touchEnd(e) {
         const moveX = e.changedTouches[0].pageX - this.data.startPageX;
-        // console.log('结束',e.changedTouches[0].pageY);
         const moveY = e.changedTouches[0].pageY - this.data.startPageY;
-        // console.log('滑动距离',moveY);
         const maxPage = this.data.category0.length - 1;
-        console.log(maxPage);
-        if (Math.abs(moveX) >= 50) {
-            // console.log('触发横向滚动条件',moveX);
+        if (Math.abs(moveX) >= 80) {
             if (moveX > 0) {
                 this.setData({
                     currentView: this.data.currentView !== 0 ? this.data.currentView - 1 : 0
@@ -164,66 +167,19 @@ Page({
                 })
             }
             this.getCourse(this.data.category0[this.data.currentView])
+          
         }
-        if (Math.abs(moveY) > 15) {
-
+        if (Math.abs(moveY) > 10) {
             if (moveY < 0) {
                 this.scrollTo()
             }
         }
-
-
         this.setData({
             toView: `card_${this.data.currentView}`,
             toBottom: `card_${this.data.currentLocation}`
         });
-        console.log(this.data.toView);
-    },
-
-    // 获取图片信息
-    getImageInfo(url) {
-        return new Promise((resolve, reject) => {
-            wx.request({
-                url: url,
-                responseType: 'arraybuffer',
-                success: function (res) {
-                    resolve(res);
-                },
-                fail: function (res) {
-                    reject(err);
-                }
-            })
-        })
-    },
-
-    
-    // 加载图片
-
-    loadImg(){
-        const urls = [
-            'https://eralab.oss-cn-guangzhou.aliyuncs.com/static/计算机科学.svg',
-            'https://eralab.oss-cn-guangzhou.aliyuncs.com/static/计算机科学_s.svg',
-        ];
-        wx.showLoading({
-            title: '加载中',
-        })
-        // Promise.all() 等待所有图片请求完成
-        Promise.all(urls.map(url => this.getImageInfo(url)))
-            .then((results) => {
-                // 所有图片都已获取，关闭loading框
-                wx.hideLoading()
-                // 对获取到的图片进行操作
-                console.log('所有图片已获取', results)
-            })
-            .catch((error) => {
-                console.log('获取图片失败：', error)
-                // 提示用户获取图片失败
-                wx.showModal({
-                    title: '提示',
-                    content: '获取图片失败，请稍后重试',
-                    showCancel: false
-                })
-            })
+       
+        this.getCourse()
     },
 
 
@@ -231,29 +187,73 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        // this.getCourse();
-        this.loadImg();
+        wx.showLoading({
+            title: '加载中',
+        })
+        this.setData({
+            isLoading: true
+        })
+        this.getCourse();
+    },
+    handleImgError1: function(e) {
+        console.log('图片加载失败', e);
+        console.log(this.data.imgUrl2);
+    },
+    // 请求第二张图片并将图片进行缓存
+    loadImg2: function (e) {
+        const that = this;
+        if (e == undefined) {
+            e = this.data.category0[0]
+        }
+        console.log('当前学科', e);
+        wx.downloadFile({
+            url: 'https://eralab.oss-cn-guangzhou.aliyuncs.com/static/' + e + '_s.svg',
+            success: function (res) {
+                const tempFilePath = res.tempFilePath;
+                      that.setData({
+                        imgUrl2: tempFilePath
+                    }, function() {
+                        console.log(that.data.imgUrl2);
+                    });
+                // wx.saveFile({
+                //   tempFilePath: tempFilePath,
+                //   success: function(res) {
+                //     const savedFilePath = res.savedFilePath;
+                    
+                //     that.setData({
+                //         imgUrl2: savedFilePath
+                //     }, function() {
+                //         console.log(that.data.imgUrl2);
+                //     });
+                    
        
+                //   }
+                // });
+            }
+        })
+
     },
 
     getCourse(e) {
+
         let that = this
         let data1;
         if (e) {
             data1 = e;
         }
+
         wx.showLoading({
             title: '加载中'
-          })
+        })
         wx.request({
             url: urls + '/course/listCourseAndCategory',
             data: {
                 category: data1
             },
             success: function (res) {
+                console.log('成功', res);
+
                 let arr = [];
-                let arr1 = [];
-                // wx.hideLoading();
                 if (res.data.data.CategoryList) {
                     for (let i = 0; i < res.data.data.CategoryList.length; i++) {
                         arr.push(res.data.data.CategoryList[i].name)
@@ -262,8 +262,8 @@ Page({
                         category0: arr
                     })
                 }
-
-
+                // that.loadImg2(e);
+                // 时间处理
                 for (let i = 0; i < res.data.data.CourseList.length; i++) {
 
                     let date = new Date(res.data.data.CourseList[i].startTime);
@@ -272,26 +272,25 @@ Page({
                     res.data.data.CourseList[i].startTime = mon + '月' + day + '日';
 
                 }
+           
                 that.setData({
                     course: res.data.data.CourseList
                 })
-                // 加载图片
-                this.loadImg();
-               
             },
             fail: function (res) {
-                wx.hideLoading();
+                wx.hideLoading()
+                console.log('失败原因', res);
                 wx.showModal({
                     title: '获取资源失败',
                     content: '是否确认重新进入小程序？',
                     success(res) {
-                      if (res.confirm) {
-                        wx.reLaunch({
-                          url: '/pages/courseCategory/courseCategory'
-                        })
-                      }
+                        if (res.confirm) {
+                            wx.reLaunch({
+                                url: '/pages/courseCategory/courseCategory'
+                            })
+                        }
                     }
-                  })
+                })
             }
         })
     },

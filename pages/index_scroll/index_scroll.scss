@@ -1,12 +1,10 @@
 .main {
-    height: 100vh;
-
+    min-height: 100vh;
     .swiper-container {
         height: 100vh;
-
+        display: block;
         .top {
-            min-height: 100vh;
-            // background: linear-gradient(2deg, #fd8112, #0085ca);
+            height: 100vh;
             position: relative;
             box-sizing: border-box;
             .swiper_top{
@@ -15,36 +13,11 @@
                 overflow: hidden;
                 swiper-item{
                     width: 100%;
-                }
-            }
-            .toBottom {
-                position: absolute;
-                display: flex;
-                width: 100%;
-                justify-content: center;
-                bottom: 10rpx;
-                box-sizing: border-box;
-                z-index: 10;
-                color: white;
-
-                view {
-                    animation: UpDown 2s infinite linear;
-                }
-
-                @keyframes UpDown {
-                    0% {
-                        transform: translateY(0);
+                    height: 100vh;
+                    image{
+                        width: 100%;
+                        height: 100vh;
                     }
-
-                    50% {
-                        transform: translateY(-17.523rpx);
-                    }
-
-                    100% {
-                        transform: translateY(0);
-                    }
-
-
                 }
             }
 
@@ -107,7 +80,7 @@
             }
 
             .choose {
-                position: absolute;
+                position: fixed;
                 bottom: 60rpx;
                 width: 100%;
                 display: flex;
@@ -156,10 +129,10 @@
             box-sizing: border-box;
 
             .choose {
-                position: absolute;
+                position: fixed;
                 width: 100%;
                 display: flex;
-                color: rgba($color: #1adeae, $alpha: 1);
+                color: #213044;  
                 font-size: 32rpx;
                 justify-content: center;
                 z-index: 99;
@@ -179,331 +152,349 @@
                 }
 
                 .choose_active {
-                    color: #213044;
-                    border-bottom: 2rpx solid #213044;
+                    color: rgba($color: #1adeae, $alpha: 1);
+                    border-bottom: 2rpx solid rgba($color: #1adeae, $alpha: 1);
                 }
             }
-
-            .toTop {
-                position: absolute;
-                right: 20rpx;
-                bottom: 290rpx;
-                background-color: white;
-                border-radius: 50%;
-                width: 80rpx;
-                height: 80rpx;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transform: rotate(-90deg);
-                z-index: 99;
-                box-shadow: 0 0 30rpx #ccc;
-
-            }
-
-            .content_center {
+            
+            .bottomSwiperChange{
                 height: 100vh;
-                overflow: scroll;
-                box-sizing: border-box;
-
-                .content_item {
+                .content_center {
+                    height: 100vh;
+                    overflow: scroll;
                     box-sizing: border-box;
-                    padding: 0 17.523rpx;
-
-                    .content_item_title {
-                        display: flex;
-                        align-items: flex-end;
-                        height: 160rpx;
-                        color: #373A42;
-                        border-bottom: 4rpx solid #80848B;
-
-                        .content_item_title_left {
-                            height: 100%;
-                            font-size: 80rpx;
-                            box-sizing: border-box;
-                            display: flex;
-                            align-items: center;
-                            color: #1adeae;
-                        }
-
-                        .content_item_title_right {
-                            height: 100%;
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-                            margin-left: 10rpx;
-                            font-size: 40rpx;
-                            margin-left: 30rpx;
-
-                            text:nth-of-type(2) {
-                                color: #80848B;
-                            }
-                        }
-                    }
-
-                    .introduce {
-                        background-color: white;
-                        border-radius: 20rpx;
-                        display: flex;
-                        flex-direction: column;
-
-                        view {
-                            font-size: 32rpx;
-                            padding: 30rpx 0;
-                            box-sizing: border-box;
-                        }
-
-                        .introduce_item {
-                            display: flex;
-                            flex-direction: column;
-                            padding-left: 15px;
-                            view {
-                                display: flex;
-                                flex-direction: column;
-                                font-size: 28.037rpx;
-                               
-                                text:nth-of-type(1) {
-                                    color: #01cd9a;
-                                    font-weight: bold;
-                                    font-size: 31.542rpx;
-                                }
-
-                                text:nth-of-type(2) {
-                                    color: #00AEEF;
-                                    font-size: 24.533rpx;
-                                    color: black;
-                                }
-                            }
-                        }
-
-                        .content_item_content_item {
-                            font-size: 28.037rpx;
-                            padding: 0 26.285rpx;
-                            background: white;
-                            color: #80848B;
-                            text-indent: 2em;
-                            margin-top: 26.285rpx;
-                        }
-
-                        .content_item_content_item:last-of-type {
-                            margin-bottom: 40rpx;
-                        }
-                    }
-
-                    .harvest {
-                        display: flex;
-                        width: 100%;
-                        margin-top: 40rpx;
-                        flex-direction: column;
-                        padding: 10px 10px;
+    
+                    .content_item {
                         box-sizing: border-box;
-                        background-color: #01cd9a;
-                        border-radius: 15px;
-                        .harvest_item {
-                            width: 100%;
+                        padding: 0 17.523rpx;
+    
+                        .content_item_title {
                             display: flex;
-                            box-sizing: border-box;
-                            align-items: center;
-                            height: 77px;
-                            background-color: white;
-                            border-radius: 15px;
-                            margin-bottom: 10px;
-                            padding: 20px;
-                            position: relative;
-                            .iconfont {
-                                font-size: 40px;
+                            align-items: flex-end;
+                            height: 160rpx;
+                            color: #373A42;
+                            border-bottom: 4rpx solid #80848B;
+    
+                            .content_item_title_left {
+                                height: 100%;
+                                font-size: 80rpx;
+                                box-sizing: border-box;
                                 display: flex;
                                 align-items: center;
+                                color: #1adeae;
+                            }
+    
+                            .content_item_title_right {
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
                                 justify-content: center;
-                                box-sizing: border-box;
-                                margin-right: 55px;
-                            }
-                            .harvest_item_line{
-                                width: 8px;
-                                height: 50px;
-                                background-color: #e5e5e5;
-                                border-radius: 10px;
-                                position: absolute;
-                                left: 85px;
-                            }
-
-                            .harvest_item_intro {
-                                box-sizing: border-box;
-                                display: flex;
-                                flex-direction: column;
-                                align-items: center;
-                                justify-content: space-evenly;
-                                font-size: 15px;
-                                color: #0c3429;
-                                text {
-                                    width: 100%;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    font-weight: bold;
+                                margin-left: 10rpx;
+                                font-size: 40rpx;
+                                margin-left: 30rpx;
+    
+                                text:nth-of-type(2) {
+                                    color: #80848B;
                                 }
                             }
                         }
-                        .harvest_item:last-of-type{
-                            margin-bottom: 0;
-                        }
-
-                    }
-
-                    .period {
-                        display: flex;
-                        flex-direction: column;
-                        margin-top: 10rpx;
-                        padding: 20rpx;
-                        box-sizing: border-box;
-                        background-color: white;
-                        border-radius: 20rpx;
-                        font-size: 32rpx;
-                        padding-bottom: 175.234rpx;
-                        justify-content: center;
-                        .image{
-                            width: 100%;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            image{
-                                width: 100%;
-                            }
-                        }
-                        .allTime {
-                            font-size: 32rpx;
-                            padding: 17.523rpx;
-                            font-weight: bold;
-                            /* 线性渐变，从顶部#00AEEF 到底部浅蓝色 */
-                            background: linear-gradient(180deg, #00AEEF, #0077B6);
-                            color: white;
-                            
-                        }
-
-                        .research {
-                            margin: 20rpx 0;
+    
+                        .introduce {
+                            background-color: white;
+                            border-radius: 20rpx;
                             display: flex;
                             flex-direction: column;
-                            .research_title {
-                                margin-bottom: 10rpx;
+                            padding: 0 20rpx;
+    
+                            view {
                                 font-size: 32rpx;
-                                padding: 17.523rpx;
+                                padding: 30rpx 0;
+                                box-sizing: border-box;
                             }
-                            .research_content{
+    
+                            .introduce_item {
                                 display: flex;
                                 flex-wrap: wrap;
-                                justify-content: space-evenly;
-                                font-size: 28.037rpx;
-                                background: linear-gradient(180deg, #00AEEF, #0077B6);
-                                box-shadow:
-                                /* 阴影效果 */
-                                0 52.57rpx 87.617rpx rgba(0, 0, 0, 0.08),
-                                0 17.523rpx 52.57rpx rgba(0, 0, 0, 0.06),
-                                0 0 17.523rpx rgba(0, 0, 0, 0.05),
-                                /* 主题色区域 */
-                                0 0 35.047rpx rgba(0, 174, 239, 0.5);
-                                color: white;
-                                overflow: hidden;
                                 box-sizing: border-box;
-                                border-radius: 17.523rpx;
-                                padding: 17.523rpx;
-                                .research_item {
-                                    flex: 1;
-                                    display: flex;
+                                .introduce_item_s {
                                     box-sizing: border-box;
-                                    align-items: center;
-                                    justify-content: center;
-                                    line-height: 61.332rpx;
-                                    width: calc((100%-17.523rpx)/2);
-                                    min-width: calc((100%-17.523rpx)/2);
+                                    background-color: #e9fff1;
+                                    height: 100rpx;
+                                    margin-bottom: 40rpx;
+                                    border-radius: 10rpx;
                                     display: flex;
-                                    margin-bottom: 17.523rpx;
-                                    border-bottom: 1.752rpx solid white;
-                                    .iconfont{
-                                        margin-right: 8.762rpx;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    font-size: 28.037rpx;
+                                    width: calc(100%/2.1);
+                                    min-width: calc(100%/2.1);
+                                    max-width: calc(100%/2.1);
+                                    margin-right: 32rpx;
+                                    .introduce_item_tright{
+                                        font-size: 24rpx;
+                                        display: flex;
+                                        flex-direction: column;
+                                        margin-left: 20rpx;
+                                        text:nth-of-type(1) {
+                                            color: black;
+                                            font-weight: bold;
+                                        }
+        
+                                        text:nth-of-type(2) {
+                                            font-size: 20rpx;
+                                            color: #848484;
+                                        }
                                     }
-                                }
-                                .research_bottom{
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    line-height: 61.332rpx;
-                                    font-size: 21.028rpx;
+                                    &:nth-child(2n){
+                                        margin-right: 0;
+                                    }
+                                    .iconfont{
+                                        color: white;
+                                        font-size: 68rpx;
+                                        padding: 16rpx;
+                                        border-radius: 16rpx;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                    }
+                                   
                                 }
                             }
-                            
+    
+                            .content_item_content_item {
+                                font-size: 28.037rpx;
+                                background: white;
+                                color: #80848B;
+                                // text-indent: 2em;
+                                padding: 0;
+                                line-height: 44rpx;
+                                margin-bottom: 20rpx;
+                            }
+                            .content_item_content_item:first-child {
+                                margin-top: 40rpx;
+                            }
+                            .content_item_content_item:last-of-type {
+                                margin-bottom: 40rpx;
+                            }
                         }
-
-                        .write {
+    
+                        .harvest {
+                            display: flex;
+                            width: 100%;
+                            margin-top: 40rpx;
+                            flex-direction: column;
+                            padding: 20rpx 20rpx;
+                            box-sizing: border-box;
+                            // background-color: #01cd9a;
+                            border-radius: 30rpx;
+                            .harvest_item {
+                                width: 100%;
+                                display: flex;
+                                box-sizing: border-box;
+                                align-items: center;
+                                height: 154rpx;
+                                background-color: white;
+                                border-radius: 30rpx;
+                                margin-bottom: 20rpx;
+                                padding: 40rpx;
+                                position: relative;
+                                box-shadow: 0 0 30rpx #ccc;
+                                .iconfont {
+                                    font-size: 80rpx;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    box-sizing: border-box;
+                                    margin-right: 110rpx;
+                                }
+                                .harvest_item_line{
+                                    width: 16rpx;
+                                    height: 100rpx;
+                                    background-color: #01cd9a;
+                                    border-radius: 20rpx;
+                                    position: absolute;
+                                    left: 170rpx;
+                                }
+    
+                                .harvest_item_intro {
+                                    box-sizing: border-box;
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    justify-content: space-evenly;
+                                    font-size: 30rpx;
+                                    color: #0c3429;
+                                    text {
+                                        width: 100%;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-weight: bold;
+                                    }
+                                }
+                            }
+                            .harvest_item:last-of-type{
+                                margin-bottom: 0;
+                            }
+    
+                        }
+    
+                        .period {
                             display: flex;
                             flex-direction: column;
-                            
-                            .write_title {
-                                margin-bottom: 10rpx;
+                            margin-top: 10rpx;
+                            padding: 20rpx;
+                            box-sizing: border-box;
+                            background-color: white;
+                            border-radius: 20rpx;
+                            font-size: 32rpx;
+                            padding-bottom: 175.234rpx;
+                            justify-content: center;
+                            .image{
+                                width: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                image{
+                                    width: 100%;
+                                }
+                            }
+                            .allTime {
                                 font-size: 32rpx;
                                 padding: 17.523rpx;
+                                font-weight: bold;
+                                /* 线性渐变，从顶部#00AEEF 到底部浅蓝色 */
+                                background: linear-gradient(180deg, #00AEEF, #0077B6);
+                                color: white;
+                                
                             }
-                            .write_center{
+    
+                            .research {
+                                margin: 20rpx 0;
                                 display: flex;
                                 flex-direction: column;
-                                align-items: center;
-                                background: linear-gradient(180deg, #00AEEF, #0077B6);
-                                box-shadow:
-                                /* 阴影效果 */
-                                0 52.57rpx 87.617rpx rgba(0, 0, 0, 0.08),
-                                0 17.523rpx 52.57rpx rgba(0, 0, 0, 0.06),
-                                0 0 17.523rpx rgba(0, 0, 0, 0.05),
-                                /* 主题色区域 */
-                                0 0 35.047rpx rgba(0, 174, 239, 0.5);
-                                color: white;
-                                border-radius: 17.523rpx;
-                                padding: 17.523rpx;
-                                .write_item {
-                                    width: 100%;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    line-height: 70.093rpx;
-                                    border-bottom: 1.752rpx solid white;
-                                    .iconfont {
-                                        margin-right: 20rpx;
-                                    }
+                                .research_title {
+                                    margin-bottom: 10rpx;
+                                    font-size: 32rpx;
+                                    padding: 17.523rpx;
                                 }
-                                .write_bottom{
-                                    width: 100%;
+                                .research_content{
                                     display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    flex-direction: column;
-                                    text{
-                                        display: block;
+                                    flex-wrap: wrap;
+                                    justify-content: space-evenly;
+                                    font-size: 28.037rpx;
+                                    background: linear-gradient(180deg, #00AEEF, #0077B6);
+                                    box-shadow:
+                                    /* 阴影效果 */
+                                    0 52.57rpx 87.617rpx rgba(0, 0, 0, 0.08),
+                                    0 17.523rpx 52.57rpx rgba(0, 0, 0, 0.06),
+                                    0 0 17.523rpx rgba(0, 0, 0, 0.05),
+                                    /* 主题色区域 */
+                                    0 0 35.047rpx rgba(0, 174, 239, 0.5);
+                                    color: white;
+                                    overflow: hidden;
+                                    box-sizing: border-box;
+                                    border-radius: 17.523rpx;
+                                    padding: 17.523rpx;
+                                    .research_item {
+                                        flex: 1;
+                                        display: flex;
+                                        box-sizing: border-box;
+                                        align-items: center;
+                                        justify-content: center;
+                                        line-height: 61.332rpx;
+                                        width: calc((100%-17.523rpx)/2);
+                                        min-width: calc((100%-17.523rpx)/2);
+                                        display: flex;
+                                        margin-bottom: 17.523rpx;
+                                        border-bottom: 1.752rpx solid white;
+                                        .iconfont{
+                                            margin-right: 8.762rpx;
+                                        }
+                                    }
+                                    .research_bottom{
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        line-height: 61.332rpx;
                                         font-size: 21.028rpx;
                                     }
                                 }
+                                
                             }
-                        
-                        }
-                        .toCourse{
-                            width: 100%;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            font-size: 31.542rpx;
-                            color: #00AEEF;
-                            padding: 17.523rpx 0;
-                            box-sizing: border-box;
-                            margin-top: 52.57rpx;
-                            .iconfont{
-                                margin-left: 17.523rpx;
+    
+                            .write {
+                                display: flex;
+                                flex-direction: column;
+                                
+                                .write_title {
+                                    margin-bottom: 10rpx;
+                                    font-size: 32rpx;
+                                    padding: 17.523rpx;
+                                }
+                                .write_center{
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    background: linear-gradient(180deg, #00AEEF, #0077B6);
+                                    box-shadow:
+                                    /* 阴影效果 */
+                                    0 52.57rpx 87.617rpx rgba(0, 0, 0, 0.08),
+                                    0 17.523rpx 52.57rpx rgba(0, 0, 0, 0.06),
+                                    0 0 17.523rpx rgba(0, 0, 0, 0.05),
+                                    /* 主题色区域 */
+                                    0 0 35.047rpx rgba(0, 174, 239, 0.5);
+                                    color: white;
+                                    border-radius: 17.523rpx;
+                                    padding: 17.523rpx;
+                                    .write_item {
+                                        width: 100%;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        line-height: 70.093rpx;
+                                        border-bottom: 1.752rpx solid white;
+                                        .iconfont {
+                                            margin-right: 20rpx;
+                                        }
+                                    }
+                                    .write_bottom{
+                                        width: 100%;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        flex-direction: column;
+                                        text{
+                                            display: block;
+                                            font-size: 21.028rpx;
+                                        }
+                                    }
+                                }
+                            
+                            }
+                            .toCourse{
+                                width: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                font-size: 31.542rpx;
+                                color: #00AEEF;
+                                padding: 17.523rpx 0;
+                                box-sizing: border-box;
+                                margin-top: 52.57rpx;
+                                .iconfont{
+                                    margin-left: 17.523rpx;
+                                }
                             }
                         }
                     }
-                }
-
-                .content_item:nth-of-type(2) {
-                    padding-bottom: 52.57rpx;
+    
+                    .content_item:nth-of-type(2) {
+                        padding-bottom: 52.57rpx;
+                    }
                 }
             }
+      
 
 
         }

@@ -10,31 +10,39 @@ Page({
      * 页面的初始数据
      */
     data: {
-        category1: [{
-                proName: 'RI-A深度版',
+        category1: [
+            {
+                proName: 'IR-深度版',
                 proImgUrl: "",
                 pages: [{
-                    'proIntroduce': ["“金衣计划”是纪元教育公司2023年推出的科研实习项目，提供全方位的科研实践和实习经验。学生通过RI-A和RI-B两种模式参与教授和行业大厂专家的项目，并得到硕士和博士导师的辅助。学生通过该计划获得研究经验和论文写作技能，为未来学术和职业发展打下坚实基础。"],
+                    'proIntroduce': ["【金衣计划】是专为青少年设计的实践科研计划。无论你是高中或大学生，无需拥有科研经验，我们的课程和指导都将让你全面、深入地掌握科研方法和流程，提前接受同等高校研究生的教育和锻炼。","在项目中，您将有机会与业内翘楚交流互动，获得他们的研究经验和技术指导。并与志同道合的学员一起探索研究，共同成长和进步。","项目完成后，您不仅能获得丰富的收获，还将对自身未来学术发展道路有更清晰的认知。","加入【金衣计划】，开启您的科研学术之旅。"],
                     'pro_item': [{
-                        t1: '真正的科研项目',
-                        t2: '(依据高校研究生科研教育的培养方案)'
+                        iconfont:'icon-keyan',
+                        color:'#b563f6',
+                        t1: '纯正科研项目',
+                        t2: '(依据高校研究生培养方案制定)'
                     }, {
-                        t1: '科研和实习',
-                        t2: '(同时收获科研经历和实习经历)'
+                        iconfont:'icon-shixishengribao',
+                        color:'#ffd131',
+                        t1: '实习科研同步',
+                        t2: '(同时收获科研与实习经历)'
                     }, {
+                        iconfont:'icon-zuoyezhidaoshu',
+                        color:'#d47466',
                         t1: '业界大佬指点',
-                        t2: '(顶尖名校教授、行业大厂专家、知名期刊主编)'
+                        t2: '(名校教授、行业专家、期刊主编)'
                     }, {
-                        t1: '背景提升',
-                        t2: '(丰富个人简历和背景，收获申请院校的offer )'
+                        iconfont:'icon-tisheng',
+                        color:'#fda834',
+                        t1: '个人背景增强',
+                        t2: '(丰富履历，提高申请成功率)'
                     }, {
-                        t1: '真正的科研项目',
-                        t2: '(依据高校研究生科研教育的培养方案)'
-                    }, {
+                        iconfont:'icon-tishengxiaoliang',
+                        color:'#085640',
                         t1: '综合素质提升',
-                        t2: '(培养探索问题和解决问题能力)'
+                        t2: '(培养自我探索和解决问题的能力)'
                     }],
-                    'proName': ['项目介绍', 'Project introduction'],
+                    'proName': ['项目介绍', 'Project Description'],
                 }, {
                     'harvest': [{
                         iconfont: 'icon-youxiang',
@@ -80,7 +88,7 @@ Page({
                         color: '#feab38',
                         content: '个人实力提升'
                     }, ],
-                    'proName': ['项目收获', 'Project harvest'],
+                    'proName': ['项目收获', 'Project Achievements'],
                 }, {
                     'proPeriod': {
                         'proImgUrl': "",
@@ -97,34 +105,41 @@ Page({
                         },
                         PageIntroduction: [0, 1, 2]
                     },
-                    'proName': ['项目周期', 'Project cycle'],
+                    'proName': ['项目周期', 'Project Plan'],
                 }]
             },
             {
-                proName: 'RI-B标准版',
+                proName: 'IR-标准版',
                 proImgUrl: "",
                 pages: [{
-                    'proIntroduce': ["“金衣计划”是纪元教育公司2023年推出的科研实习项目，提供全方位的科研实践和实习经验。学生通过RI-A和RI-B两种模式参与教授和行业大厂专家的项目，并得到硕士和博士导师的辅助。学生通过该计划获得研究经验和论文写作技能，为未来学术和职业发展打下坚实基础。"],
+                    'proIntroduce': ["【金衣计划】是专为青少年设计的实践科研计划。无论你是高中或大学生，无需拥有科研经验，我们的课程和指导都将让你全面、深入地掌握科研方法和流程，提前接受同等高校研究生的教育和锻炼。","在项目中，您将有机会与业内翘楚交流互动，获得他们的研究经验和技术指导。并与志同道合的学员一起探索研究，共同成长和进步。","项目完成后，您不仅能获得丰富的收获，还将对自身未来学术发展道路有更清晰的认知。","加入【金衣计划】，开启您的科研学术之旅。"],
                     'pro_item': [{
-                        t1: '真正的科研项目',
-                        t2: '(依据高校研究生科研教育的培养方案)'
+                        iconfont:'icon-keyan',
+                        color:'#b563f6',
+                        t1: '纯正科研项目',
+                        t2: '(依据高校研究生培养方案制定)'
                     }, {
-                        t1: '科研和实习',
-                        t2: '(同时收获科研经历和实习经历)'
+                        iconfont:'icon-shixishengribao',
+                        color:'#ffd131',
+                        t1: '实习科研同步',
+                        t2: '(同时收获科研与实习经历)'
                     }, {
+                        iconfont:'icon-zuoyezhidaoshu',
+                        color:'#d47466',
                         t1: '业界大佬指点',
-                        t2: '(顶尖名校教授、行业大厂专家、知名期刊主编)'
+                        t2: '(名校教授、行业专家、期刊主编)'
                     }, {
-                        t1: '背景提升',
-                        t2: '(丰富个人简历和背景，收获申请院校的offer )'
+                        iconfont:'icon-tisheng',
+                        color:'#fda834',
+                        t1: '个人背景增强',
+                        t2: '(丰富履历，提高申请成功率)'
                     }, {
-                        t1: '真正的科研项目',
-                        t2: '(依据高校研究生科研教育的培养方案)'
-                    }, {
+                        iconfont:'icon-tishengxiaoliang',
+                        color:'#085640',
                         t1: '综合素质提升',
-                        t2: '(培养探索问题和解决问题能力)'
+                        t2: '(培养自我探索和解决问题的能力)'
                     }],
-                    'proName': ['项目介绍', 'Project introduction'],
+                    'proName': ['项目介绍', 'Project Description'],
                 }, {
                     'harvest': [{
                         iconfont: 'icon-youxiang',
@@ -170,7 +185,7 @@ Page({
                         color: '#feab38',
                         content: '个人实力提升'
                     }, ],
-                    'proName': ['项目收获', 'Project harvest'],
+                    'proName': ['项目收获', 'Project Achievements'],
                 }, {
                     'proPeriod': {
                         'proImgUrl': "",
@@ -187,77 +202,14 @@ Page({
                         },
                         PageIntroduction: [0, 1, 2]
                     },
-                    'proName': ['项目周期', 'Project cycle'],
+                    'proName': ['项目周期', 'Project Plan'],
                 }]
             },
         ],
         currentPage: 0,
         top_currentPage: 0,
-        bottom_currentPage: 0,
+        
     },
-
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    // onLoad(options) {
-    //     var that = this;
-    //     for (let i = 0; i < this.data.category1.length; i++) {
-    //         wx.showLoading({
-    //             title: '加载中',
-    //         })
-    //         wx.getImageInfo({
-    //             // 测试地址
-    //             src: `https://eralab.oss-cn-guangzhou.aliyuncs.com/static/logo.jpg`,
-    //             // 上线地址
-    //             // src: ImgUrls + `/image/index/bg${i}.svg`,
-    //             success: function (res) {
-    //                 console.log('成功',res);
-    //                 that.data.category1[i].proImgUrl = res.path
-    //                 wx.hideLoading();
-    //             },
-    //             fail: function (res) {
-    //                 wx.hideLoading();
-    //                 wx.showModal({
-    //                     title: '获取资源失败',
-    //                     content: '是否确认重新进入小程序？',
-    //                     success(res) {
-    //                       if (res.confirm) {
-    //                         wx.reLaunch({
-    //                           url: '/pages/index_scroll/index_scroll'
-    //                         })
-    //                       }
-    //                     }
-    //                   })
-    //             }
-    //         })
-    //         for (let j = 0; j < this.data.category1[i].pages.length; j++) {
-    //             if (this.data.category1[i].pages[j].proPeriod != undefined) {
-    //                 wx.getImageInfo({
-    //                     // 测试
-    //                     // src: ImgUrls + `/image/index/period${i}.svg`,
-    //                     // 发布
-    //                     src: `https://eralab.oss-cn-guangzhou.aliyuncs.com/static/logo.jpg`,
-    //                     success: function (res) {
-    //                         that.data.category1[i].pages[j].proPeriod.proImgUrl =res.path;
-    //                     },
-    //                     // fail: function (res) {
-    //                     //     wx.hideLoading();
-    //                     //     wx.showToast({
-    //                     //         title: '资源请求失败,请重新进入小程序',
-    //                     //         icon: 'none',
-    //                     //         duration: 2000
-    //                     //     })
-    //                     // }
-    //                 })
-    //             }
-    //         }
-    //     }
-    // },
-
-
-    // 底部页面滚动
-
     onLoad(optios) {
         const urls = [
             'https://eralab.oss-cn-guangzhou.aliyuncs.com/static/bg1.svg',
@@ -272,14 +224,14 @@ Page({
                 // 所有图片都已获取，关闭loading框
                 wx.hideLoading()
                 // 对获取到的图片进行操作
-                console.log('所有图片已获取', results)
+                // console.log('所有图片已获取', results)
             })
             .catch((error) => {
                 console.log('获取图片失败：', error)
                 // 提示用户获取图片失败
                 wx.showModal({
                     title: '提示',
-                    content: '获取图片失败，请稍后重试',
+                    content: '获取资源，请稍后重试',
                     showCancel: false
                 })
             })
@@ -299,28 +251,25 @@ Page({
             })
         })
     },
+    // 上下滑动
+    currentPageChange(e){
+        console.log(e.detail.current);
+        if(e.detail.source === 'touch'){
+            that.setData({
+                currentPage: e.detail.current
+            })
+        // this.setData({
+        //     currentPage:e.detail.current,
+      
+        // })
+    }
+},
 
 
-    bottomPageChange(e) {
-        this.setData({
-            bottom_currentPage: e.detail.current
-        })
-
-    },
     //底部页面左右滚动
     bottomSwiperChange(e) {
         this.setData({
             top_currentPage: e.detail.current
-        })
-    },
-    goToNextPage: function (e) {
-        this.setData({
-            currentPage: 1
-        })
-    },
-    toTop() {
-        this.setData({
-            currentPage: 0
         })
     },
     choosePro(e) {
